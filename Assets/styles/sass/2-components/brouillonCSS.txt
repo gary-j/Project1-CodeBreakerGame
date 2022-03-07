@@ -1,0 +1,51 @@
+.gameboard {
+  border: solid 2px black;
+
+  .container {
+    width: 60vw;
+    height: 60vh;
+    min-width: 50vw;
+    max-width: 70vw;
+    min-height: 90vh;
+    max-height: 90vh;
+    //How to write and use area
+    // grid-template-areas:
+    //   "<grid-area-name> | . | none | ..."
+    //   "...";
+    // .item-a {
+    //   grid-area: header;
+    //   border: 2px solid green;
+    // }
+    // .item-b {
+    //   grid-area: main;
+    // }
+    // .item-c {
+    //   grid-area: sidebar;
+    // }
+    // .item-d {
+    //   grid-area: footer;
+    // }
+    // .item {
+    //     grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+    //   }
+    // #grid {
+    //   border: 1px solid red;
+    //   width: 100%;
+    //   height: 100%;
+    //   display: grid;
+    //   grid-template-columns: repeat(5, 1fr [col-start]);
+    //   //   grid-template-rows: auto;
+    //   //   grid-template-areas:
+    //   //     "header header header header"
+    //   //     "main main . sidebar"
+    //   //     "footer footer footer footer";
+    //   grid-template-rows: repeat(10, 1fr [row-start]);
+    // }
+    // .cell {
+    //   background-color: blue;
+    // }
+    // .cell2 {
+    //   background-color: pink;
+    // }
+  }
+}

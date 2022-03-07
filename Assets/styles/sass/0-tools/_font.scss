@@ -1,32 +1,33 @@
-// @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Hubballi&display=swap),
+  url(https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap);
 
-// $font1: 'Poppins',
-// sans-serif;
-// //graisses
-// $regular : 400;
-// $semi-bold : 600;
-// $bold : 700;
+$font1: "Hubballi", cursive;
+$font2: "Rajdhani", sans-serif;
+//graisses
+$light: 300;
+$regular: 400;
+$regular: 500;
+$semi-bold: 600;
+$bold: 700;
 
-// // $font2 : 'Supermercado One',cursive;
-
-// * {
-//     font-family: $font1;
-//     font-size: 1rem;
-// }
+* {
+  font-family: $font2;
+  font-size: 1rem;
+}
 
 // @mixin paragraphe {
-//     font-size: 1.5rem;
-//     text-align: center;
-//     font-weight: $semi-bold;
+//   font-size: 1.5rem;
+//   text-align: center;
+//   font-weight: $semi-bold;
 // }
 
 // p {
-//     @include paragraphe();
+//   @include paragraphe();
 // }
 
 // h2 {
-//     color: black;
-//     font-size: 2.5rem;
-//     font-weight: $semi-bold;
-//     text-align: center;
+//   color: black;
+//   font-size: 2.5rem;
+//   font-weight: $semi-bold;
+//   text-align: center;
 // }

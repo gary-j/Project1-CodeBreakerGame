@@ -4,6 +4,8 @@
     - set line-height to golden ratio
 
 */
+@import url(https://fonts.googleapis.com/css2?family=Hubballi&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap);
 * {
   box-sizing: border-box;
   font-display: swap;
@@ -49,20 +51,6 @@ h5 {
   hyphens: auto;
 }
 
-input,
-textarea,
-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  outline: none;
-  outline: none;
-  resize: none;
-}
-
 input[type=checkbox] {
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
@@ -81,6 +69,71 @@ p {
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
+}
+
+* {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+main .gameboard {
+  width: 60vw;
+}
+main .gameboard .container table#gameboard {
+  overflow-x: auto;
+  width: 60vw;
+  height: 60vh;
+}
+main .gameboard .container table#gameboard td:nth-child(1),
+main .gameboard .container table#gameboard th:nth-child(1) {
+  min-width: 6em;
+  width: 20%;
+}
+main .gameboard .container table#gameboard td:not(:nth-child(1)),
+main .gameboard .container table#gameboard th:not(:nth-child(1)) {
+  min-width: 6em;
+}
+main .gameboard .container table#gameboard thead {
+  width: 100%;
+  height: 10%;
+}
+main .gameboard .container table#gameboard thead tr#gameTitle {
+  background-color: #12c8e0;
+  height: 50%;
+}
+main .gameboard .container table#gameboard thead tr#secretCode {
+  background-color: aqua;
+  height: 50%;
+}
+main .gameboard .container table#gameboard tbody {
+  background-color: green;
+  height: 80%;
+}
+main .gameboard .container table#gameboard tbody tr.playerTry {
+  width: 100%;
+  height: 4em;
+  background-color: pink;
+}
+main .gameboard .container table#gameboard tfoot {
+  background-color: grey;
+  width: 100%;
+  height: 10%;
+}
+
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+  }
+}
+section.settingsPanel {
+  width: 40vw;
+  height: 60vh;
+  background-color: grey;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -6,8 +6,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODE BREAKER by Gary J.</title>
     <link rel="stylesheet" href="/Project1-CodeBreakerGame/Assets/styles/sass/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
     <h1>CODE BREAKER</h1>
+    <main>
+        <section class="gameboard">
+            <div class="container">
+                 <table id="gameboard">
+                    <thead>
+                        <tr id="gameTitle">
+                            <th colspan="4">BREAK THE CODE</th>
+                        </tr>
+                        <tr id="secretCode">
+                                <th class="checker">checker</th>
+                            <!-- some <th id="one"> for each secret item-->
+                                <!-- <th></th>
+                                <th></th>
+                                <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="playerTry">
+                            <td class="checker"></td>
+                            <!-- others <td class="try"> == to secret code length-->
+                                <!-- <td class="try"></td>
+                                <td class="try"></td>
+                                <td class="try"></td> -->
+                                
+                        </tr>
+                        <tr class="playerTry">
+                            <td class="checker"></td>
+                            <!-- others <td class="try"> == to secret code length-->
+                                <!-- <td class="try"></td>
+                                <td class="try"></td>
+                                <td class="try"></td> -->
+                                
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr class="playerSet">
+                            <td class="checker"></td>
+                            <!-- <td class="player"> == to secret code length-->
+                                <!-- <td class="playerCode"></td>
+                                <td class="playerCode"></td>
+                                <td class="playerCode"></td> -->
+                        </tr>
+                    </tfoot>
+                </table> 
+
+             </div>
+        </section>
+        <section class="settingsPanel">
+            <div class="container">
+                <h2>Settings Panel</h2>
+                <div class="settings">
+                    <h2>CODE LENGTH</h2>
+                    <div class="codeLength">
+                        <div class="length3">
+                            <input type="radio" id="code3" name="code3" value="code3">
+                            <label for="3">3</label>
+                        </div>
+                        <div class="length4">
+                            <input type="radio" id="code4" name="code4" value="code4">
+                            <label for="4">4</label>
+                        </div>
+                        <div class="length5">
+                            <input type="radio" id="code5" name="code5" value="code5">
+                            <label for="5">5</label>
+                        </div>
+                        <div class="length6">
+                            <input type="radio" id="code6" name="code6" value="code6">
+                            <label for="6">6</label>
+                        </div>
+                    </div> <!-- fin code length-->
+                    <div class="variants">
+                        <!-- next features, nb of colors or variant-->
+                        <h3>ITEMS VARIANTS</h3>
+                        <div class="length3">
+                            <input type="radio" name="var3" id="var3" value="var3">
+                            <label for="var3">3</label>
+                        </div>
+                        <div class="length4">
+                            <input type="radio" name="var4" id="var4" value="var4">
+                            <label for="var4">4</label>
+                        </div>
+                        <div class="length5">
+                            <input type="radio" name="var5" id="var5" value="var5">
+                            <label for="var5">5</label>
+                        </div>
+                        <div class="length6">
+                            <input type="radio" name="var6" id="var6" value="var6">
+                            <label for="var6">6</label>
+                        </div>
+                        <div class="length7">
+                            <input type="radio" name="var7" id="var7" value="var7">
+                            <label for="var7">7</label>
+                        </div>
+                    </div> <!-- fin variants-->
+                    <div class="chronometer">
+                        <h2>chronometer</h2>
+                        <button>YES/NO</button>
+                    </div>
+                    <hr>
+                </div> <!-- fin settings-->
+                <!-- --- GAME CONTROLS --- -->
+                <div class="startBtn"> <!-- toggle RESET GAME -->
+                    <button id="start" class="start">START GAME</button>
+                </div>
+                <div class="movesControls">
+                    <button class="undo">Last Move</button>
+                </div>
+                <h2>SELECT ITEMS</h2>
+                <div class="selectItems gridItems"></div>
+
+
+            </div>
+        </section>
+    </main>
 </body>
 </html>

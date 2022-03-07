@@ -1,0 +1,59 @@
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .gameboard {
+    width: 60vw;
+    .container {
+      table#gameboard {
+        overflow-x: auto;
+        //   border: 2px solid red;
+        width: 60vw;
+        height: 60vh;
+        td:nth-child(1),
+        th:nth-child(1) {
+          min-width: 6em;
+          width: 20%;
+        }
+        td:not(:nth-child(1)),
+        th:not(:nth-child(1)) {
+          min-width: 6em;
+        }
+        thead {
+          width: 100%;
+          height: 10%;
+          tr#gameTitle {
+            background-color: rgb(18, 200, 224);
+            height: 50%;
+          }
+          tr#secretCode {
+            background-color: aqua;
+            height: 50%;
+          }
+        }
+        tbody {
+          background-color: green;
+          height: 80%;
+          tr.playerTry {
+            width: 100%;
+            height: 4em;
+            background-color: pink;
+          }
+        }
+        tfoot {
+          background-color: grey;
+          width: 100%;
+          height: 10%;
+        }
+      }
+    }
+  } //<section 1 class="gameboard
+} // </main>
+
+@media (max-width: 767px) {
+  main {
+    flex-direction: column;
+    // ou le settins panel en toggle ou display none
+  }
+}

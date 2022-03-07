@@ -50,13 +50,13 @@ h5 {
   hyphens: auto;
 }
 
-input,
-textarea,
-button {
-  @include btResetAppearance();
-  outline: none;
-  resize: none;
-}
+// input,
+// textarea,
+// button {
+//   @include btResetAppearance();
+//   outline: none;
+//   resize: none;
+// }
 
 input[type="checkbox"] {
   @include brad(0.3rem);
