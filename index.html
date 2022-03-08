@@ -13,50 +13,22 @@
     <h1>CODE BREAKER</h1>
     <main>
         <section class="gameboard">
-            <div class="container">
-                 <table id="gameboard">
-                    <thead>
-                        <tr id="gameTitle">
-                            <th colspan="4">BREAK THE CODE</th>
-                        </tr>
-                        <tr id="secretCode">
-                                <th class="checker">checker</th>
-                            <!-- some <th id="one"> for each secret item-->
-                                <!-- <th></th>
-                                <th></th>
-                                <th></th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="playerTry">
-                            <td class="checker"></td>
-                            <!-- others <td class="try"> == to secret code length-->
-                                <!-- <td class="try"></td>
-                                <td class="try"></td>
-                                <td class="try"></td> -->
-                                
-                        </tr>
-                        <tr class="playerTry">
-                            <td class="checker"></td>
-                            <!-- others <td class="try"> == to secret code length-->
-                                <!-- <td class="try"></td>
-                                <td class="try"></td>
-                                <td class="try"></td> -->
-                                
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="playerSet">
-                            <td class="checker"></td>
-                            <!-- <td class="player"> == to secret code length-->
-                                <!-- <td class="playerCode"></td>
-                                <td class="playerCode"></td>
-                                <td class="playerCode"></td> -->
-                        </tr>
-                    </tfoot>
-                </table> 
+            <div class="container grid">
+                <h2>Break The Code</h2>
+                <div class="row secretCode"> <!-- add class nbCol-->
+                    <!-- <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div>
+                    <div class="col-1"></div> -->
+                </div>
+                <div class=" row playerTry">
+                    <!-- <div class="col-1"></div> -->
+                </div>
+                <div class="row playerCode"></div>
 
-             </div>
+
+             </div> <!-- fin container grid-->
         </section>
         <section class="settingsPanel">
             <div class="container">
@@ -65,19 +37,19 @@
                     <h2>CODE LENGTH</h2>
                     <div class="codeLength">
                         <div class="length3">
-                            <input type="radio" id="code3" name="code3" value="code3">
+                            <input type="radio" id="code3" name="code" value="code3">
                             <label for="3">3</label>
                         </div>
                         <div class="length4">
-                            <input type="radio" id="code4" name="code4" value="code4">
+                            <input type="radio" id="code4" name="code" value="code4">
                             <label for="4">4</label>
                         </div>
                         <div class="length5">
-                            <input type="radio" id="code5" name="code5" value="code5">
+                            <input type="radio" id="code5" name="code" value="code5">
                             <label for="5">5</label>
                         </div>
                         <div class="length6">
-                            <input type="radio" id="code6" name="code6" value="code6">
+                            <input type="radio" id="code6" name="code" value="code6">
                             <label for="6">6</label>
                         </div>
                     </div> <!-- fin code length-->
@@ -85,45 +57,48 @@
                         <!-- next features, nb of colors or variant-->
                         <h3>ITEMS VARIANTS</h3>
                         <div class="length3">
-                            <input type="radio" name="var3" id="var3" value="var3">
+                            <input type="radio" name="var" id="var3" value="var3">
                             <label for="var3">3</label>
                         </div>
                         <div class="length4">
-                            <input type="radio" name="var4" id="var4" value="var4">
+                            <input type="radio" name="var" id="var4" value="var4">
                             <label for="var4">4</label>
                         </div>
                         <div class="length5">
-                            <input type="radio" name="var5" id="var5" value="var5">
+                            <input type="radio" name="var" id="var5" value="var5">
                             <label for="var5">5</label>
                         </div>
                         <div class="length6">
-                            <input type="radio" name="var6" id="var6" value="var6">
+                            <input type="radio" name="var" id="var6" value="var6">
                             <label for="var6">6</label>
                         </div>
                         <div class="length7">
-                            <input type="radio" name="var7" id="var7" value="var7">
+                            <input type="radio" name="var" id="var7" value="var7">
                             <label for="var7">7</label>
                         </div>
                     </div> <!-- fin variants-->
                     <div class="chronometer">
                         <h2>chronometer</h2>
-                        <button>YES/NO</button>
+                        <button id="chrono">YES/NO</button>
                     </div>
                     <hr>
                 </div> <!-- fin settings-->
-                <!-- --- GAME CONTROLS --- -->
-                <div class="startBtn"> <!-- toggle RESET GAME -->
-                    <button id="start" class="start">START GAME</button>
-                </div>
-                <div class="movesControls">
-                    <button class="undo">Last Move</button>
-                </div>
-                <h2>SELECT ITEMS</h2>
-                <div class="selectItems gridItems"></div>
 
+                <!-- --- GAME CONTROLS --- -->
+                <div class="gameControls">
+                    <div class="startBtn"> <!-- toggle RESET GAME -->
+                        <button id="start" class="start">START GAME</button>
+                    </div>
+                    <div class="movesControls">
+                        <button id="lastMove" class="undo">Last Move</button>
+                    </div>
+                    <h2>SELECT ITEMS</h2>
+                    <div class="selectItems gridItems"></div>
+                </div>
 
             </div>
         </section>
     </main>
+    <script src="/Project1-CodeBreakerGame/Assets/js/index.js" type="module"></script>
 </body>
 </html>

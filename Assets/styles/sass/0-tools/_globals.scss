@@ -1,0 +1,43 @@
+// // kittygiraudel.com "cast a sring"
+// @function number($string) {
+//   // Matrices
+//   $strings: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9";
+//   $numbers: 0 1 2 3 4 5 6 7 8 9;
+
+//   // Result
+//   $result: 0;
+
+//   // Looping through all characters
+//   @for $i from 1 through str-length($string) {
+//     // Do magic
+//   }
+
+//   @return $result;
+// }
+
+// // $columns: number(var(--nb-column));
+
+// // $columns: 3;
+
+// @for $i from 1 through $columns {
+//   .col-#{$i} {
+//     flex: 0 0 100% / $columns * $i;
+//   }
+//   .col-offset-#{$i} {
+//     margin-left: 100% / $columns * $i;
+//   }
+// }
+
+// @for $i from 4 through 7 {
+//   .nbCol-#{$i} {
+//     display: flex;
+//     flex-wrap: wrap;
+//     .div {
+//       flex: 0 0 100% / $i * $i;
+//       background-color: lightgreen;
+//       border: 1px solid violet;
+//       padding: 1rem 0;
+//       text-align: center;
+//     }
+//   }
+// }

@@ -1,5 +1,23 @@
 section.settingsPanel {
-  width: 40vw;
+  width: 40%;
   height: 60vh;
   background-color: grey;
+  .container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: stretch;
+    .settings {
+      .codeLength {
+      }
+      .variants {
+      }
+      .chronometer {
+      }
+    }
+    .gameControls {
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

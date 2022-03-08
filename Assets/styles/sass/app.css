@@ -77,52 +77,36 @@ p {
 }
 
 main {
+  width: 100vw;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-main .gameboard {
-  width: 60vw;
+main section.gameboard {
+  border: 1px solid blue;
+  width: 60%;
 }
-main .gameboard .container table#gameboard {
-  overflow-x: auto;
-  width: 60vw;
-  height: 60vh;
+main section.gameboard .container {
+  border: 1px solid red;
+  max-width: calc(100% - 2em);
+  margin: 0 auto;
 }
-main .gameboard .container table#gameboard td:nth-child(1),
-main .gameboard .container table#gameboard th:nth-child(1) {
-  min-width: 6em;
-  width: 20%;
+main section.gameboard .container h2 {
+  text-align: center;
 }
-main .gameboard .container table#gameboard td:not(:nth-child(1)),
-main .gameboard .container table#gameboard th:not(:nth-child(1)) {
-  min-width: 6em;
+main section.gameboard .container .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 20px;
+  background-color: blue;
 }
-main .gameboard .container table#gameboard thead {
-  width: 100%;
-  height: 10%;
-}
-main .gameboard .container table#gameboard thead tr#gameTitle {
-  background-color: #12c8e0;
-  height: 50%;
-}
-main .gameboard .container table#gameboard thead tr#secretCode {
-  background-color: aqua;
-  height: 50%;
-}
-main .gameboard .container table#gameboard tbody {
-  background-color: green;
-  height: 80%;
-}
-main .gameboard .container table#gameboard tbody tr.playerTry {
-  width: 100%;
-  height: 4em;
-  background-color: pink;
-}
-main .gameboard .container table#gameboard tfoot {
-  background-color: grey;
-  width: 100%;
-  height: 10%;
+main section.gameboard .container .row div {
+  flex: 1;
+  background-color: lightgreen;
+  border: 1px solid violet;
+  padding: 1rem 0;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
@@ -131,9 +115,18 @@ main .gameboard .container table#gameboard tfoot {
   }
 }
 section.settingsPanel {
-  width: 40vw;
+  width: 40%;
   height: 60vh;
   background-color: grey;
+}
+section.settingsPanel .container {
+  display: flex;
+  flex-direction: column;
+}
+section.settingsPanel .container .gameControls {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=app.css.map */
