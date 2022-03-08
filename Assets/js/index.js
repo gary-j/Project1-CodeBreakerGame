@@ -78,10 +78,12 @@ function itemsBoardValue(e){
     let divs =[];
 
     for (let j=0; j<x; j++){
-       let newItem = document.createElement('button');
+       let newItem = document.createElement('div');
        newItem.classList.add('item-btn');
        newItem.classList.add(`item-${j}`);
        newItem.setAttribute('id',`item-${j}`)
+       newItem.setAttribute('value',`'${j}'`);
+
     // I don't appendChild the <div> I shuffle them after loop
     //    selectItems.appendChild(newItem);
     //    newItem.addEventListener('click', (e)=> console.log(e));

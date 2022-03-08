@@ -187,29 +187,29 @@ section.settingsPanel .container .gameControls .selectItems {
   height: 40px;
   background-color: blue;
 }
-section.settingsPanel .container .gameControls .selectItems button {
+section.settingsPanel .container .gameControls .selectItems div {
   flex: 1;
   text-align: center;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-0 {
+section.settingsPanel .container .gameControls .selectItems div.item-0 {
   background-color: blue;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-1 {
+section.settingsPanel .container .gameControls .selectItems div.item-1 {
   background-color: red;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-2 {
+section.settingsPanel .container .gameControls .selectItems div.item-2 {
   background-color: yellow;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-3 {
+section.settingsPanel .container .gameControls .selectItems div.item-3 {
   background-color: green;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-4 {
+section.settingsPanel .container .gameControls .selectItems div.item-4 {
   background-color: black;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-5 {
+section.settingsPanel .container .gameControls .selectItems div.item-5 {
   background-color: #05a3ff;
 }
-section.settingsPanel .container .gameControls .selectItems button.item-6 {
+section.settingsPanel .container .gameControls .selectItems div.item-6 {
   background-color: #9615ff;
 }
 
