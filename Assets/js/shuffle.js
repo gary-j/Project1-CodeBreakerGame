@@ -12,14 +12,14 @@ function shuffle(array){
     let result = [];
     let i=1
     while(arrayCopy.length){ // 1.
-        console.log('roll n° :', i);
-        console.log(arrayCopy, 'after splice');
+        // console.log('roll n° :', i);
+        // console.log(arrayCopy, 'after splice');
         // 2.
         let pickShuffle = Math.floor(Math.random()* arrayCopy.length)
-        console.log('N° ', pickShuffle, ' is ', arrayCopy[pickShuffle]);
+        // console.log('N° ', pickShuffle, ' is ', arrayCopy[pickShuffle]);
         // 3-4.a
         result.unshift(arrayCopy[pickShuffle]);
-        console.log(result, 'New shuffled array');
+        // console.log(result, 'New shuffled array');
         // 4.b
         arrayCopy.splice(pickShuffle,1)
         i++;

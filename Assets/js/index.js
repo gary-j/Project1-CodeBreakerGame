@@ -31,6 +31,7 @@ const selectItems = document.querySelector('.selectItems');
 
 // ARRAYS OF CODE 
 const arrayCode = [];
+let shuffledItems = [];
 const arrayToCheck = [];
 
 //
@@ -74,6 +75,7 @@ numOfItems.forEach( button => {
 function itemsBoardValue(e){
 
     selectItems.innerHTML='';
+    shuffledItems = [];
     let x = e.target.value;
     let divs =[];
 
@@ -82,7 +84,7 @@ function itemsBoardValue(e){
        newItem.classList.add('item-btn');
        newItem.classList.add(`item-${j}`);
        newItem.setAttribute('id',`item-${j}`)
-       newItem.setAttribute('value',`'${j}'`);
+       newItem.setAttribute('value',`${j}`);
 
     // I don't appendChild the <div> I shuffle them after loop
     //    selectItems.appendChild(newItem);
@@ -91,7 +93,7 @@ function itemsBoardValue(e){
        divs.push(newItem);
     }
     // I shuffle the <div> display order
-    let shuffledItems = shuffle(divs);
+    shuffledItems = shuffle(divs);
 
     shuffledItems.forEach(elem => {
         selectItems.appendChild(elem);
@@ -104,6 +106,7 @@ function itemsBoardValue(e){
     // return for the code generator
     itemsValue = x;
     console.log(itemsValue, 'item value');
+    console.log(shuffledItems, 'shuffle items array');
     return itemsValue;
 }
 
@@ -155,6 +158,7 @@ function startGame(i, x){
         startBtn.classList.add('start');
         selectItems.innerHTML='';
         arrayCode.splice(0, arrayCode.length);
+        shuffledItems = [];
         console.log(arrayCode, 'tableau vidé');
     }
 }
