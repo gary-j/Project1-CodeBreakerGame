@@ -76,6 +76,50 @@ p {
   font-size: 1rem;
 }
 
+/* From cssbuttons.io */
+button {
+  --glow-color: rgb(217, 176, 255);
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: 0.25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 15px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em 0.25em var(--glow-color), 0 0 4em 1em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
+  text-shadow: 0 0 0.5em var(--glow-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+button::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+button:hover {
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em 0em var(--glow-color), 0 0 1em 0em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
+}
+
+button:active {
+  box-shadow: 0 0 0.6em 0.25em var(--glow-color), 0 0 2.5em 2em var(--glow-spread-color), inset 0 0 0.5em 0.25em var(--glow-color);
+}
+
 main {
   width: 100vw;
   display: flex;
@@ -128,6 +172,14 @@ section.settingsPanel .container .gameControls {
   display: flex;
   flex-direction: column;
 }
+section.settingsPanel .container .gameControls div {
+  width: 100%;
+}
+section.settingsPanel .container .gameControls div button {
+  margin: 1em auto;
+  flex: 1;
+  width: 100%;
+}
 section.settingsPanel .container .gameControls .selectItems {
   display: flex;
   flex-direction: row;
@@ -135,31 +187,29 @@ section.settingsPanel .container .gameControls .selectItems {
   height: 40px;
   background-color: blue;
 }
-section.settingsPanel .container .gameControls .selectItems div {
+section.settingsPanel .container .gameControls .selectItems button {
   flex: 1;
-  background-color: #d0e2d0;
-  border: 1px solid #a709a7;
   text-align: center;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-0 {
+section.settingsPanel .container .gameControls .selectItems button.item-0 {
   background-color: blue;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-1 {
+section.settingsPanel .container .gameControls .selectItems button.item-1 {
   background-color: red;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-2 {
+section.settingsPanel .container .gameControls .selectItems button.item-2 {
   background-color: yellow;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-3 {
+section.settingsPanel .container .gameControls .selectItems button.item-3 {
   background-color: green;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-4 {
+section.settingsPanel .container .gameControls .selectItems button.item-4 {
   background-color: black;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-5 {
+section.settingsPanel .container .gameControls .selectItems button.item-5 {
   background-color: #05a3ff;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-6 {
+section.settingsPanel .container .gameControls .selectItems button.item-6 {
   background-color: #9615ff;
 }
 

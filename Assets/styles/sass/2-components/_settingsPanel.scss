@@ -18,6 +18,14 @@ section.settingsPanel {
       border: 1px solid black;
       display: flex;
       flex-direction: column;
+      div {
+        width: 100%;
+        button {
+          margin: 1em auto;
+          flex: 1;
+          width: 100%;
+        }
+      }
 
       .selectItems {
         display: flex;
@@ -25,10 +33,10 @@ section.settingsPanel {
         flex-wrap: wrap;
         height: 40px;
         background-color: blue;
-        div {
+        button {
           flex: 1;
-          background-color: rgb(208, 226, 208);
-          border: 1px solid rgb(167, 9, 167);
+          // background-color: rgb(208, 226, 208);
+          // border: 1px solid rgb(167, 9, 167);
           // padding: 1rem 0;
           text-align: center;
 

@@ -1,4 +1,6 @@
 import Game from "./classes/game.js";
+// import shuffle from "./shuffle.js";
+import {shuffle} from './shuffle.js';
 
 const game = new Game();
 
@@ -28,7 +30,7 @@ const lastMove = document.getElementById('lastMove');
 const selectItems = document.querySelector('.selectItems');
 
 // ARRAYS OF CODE 
-const array = [];
+const arrayCode = [];
 const arrayToCheck = [];
 
 //
@@ -70,17 +72,33 @@ numOfItems.forEach( button => {
     button.addEventListener('click', (e) => itemsBoardValue(e)) ;
 });
 function itemsBoardValue(e){
+
     selectItems.innerHTML='';
     let x = e.target.value;
+    let divs =[];
 
     for (let j=0; j<x; j++){
-       let newItem = document.createElement('div');
+       let newItem = document.createElement('button');
        newItem.classList.add('item-btn');
        newItem.classList.add(`item-${j}`);
        newItem.setAttribute('id',`item-${j}`)
-       selectItems.appendChild(newItem);
-       newItem.addEventListener('click', (e)=> console.log(e));
+    // I don't appendChild the <div> I shuffle them after loop
+    //    selectItems.appendChild(newItem);
+    //    newItem.addEventListener('click', (e)=> console.log(e));
+       console.log(newItem, 'new item');
+       divs.push(newItem);
     }
+    // I shuffle the <div> display order
+    let shuffledItems = shuffle(divs);
+
+    shuffledItems.forEach(elem => {
+        selectItems.appendChild(elem);
+    // I add the event listener;
+       elem.addEventListener('click', (e)=> console.log(e));
+    });
+    // I empty the divs array
+    divs=[];
+    
     // return for the code generator
     itemsValue = x;
     console.log(itemsValue, 'item value');
@@ -92,16 +110,16 @@ function itemsBoardValue(e){
 // C O D E _ G E N E R A T O R
 // with Fisher Yates Shuffle
 function codeGen(codeValue, itemsValue){
-// i = codeLength; x = numbOfVariant
-// let testArray=[];
-console.log(codeValue, itemsValue, 'code gen bien reçue');
+
+// console.log(codeValue, itemsValue, 'code gen bien reçue');
+
 let i = codeValue;
 let x = itemsValue;
 for(let j=0; j<i; j++){
-    array.push(Math.floor(Math.random()*x));
+    arrayCode.push(Math.floor(Math.random()*x));
 }
-    console.log(array);
-    return array
+    // console.log(arrayCode);
+    // return arrayCode
 }
 
 // S T A R T _ G A M E
@@ -133,12 +151,13 @@ function startGame(i, x){
         startBtn.textContent='START GAME';
         startBtn.classList.remove('reset')
         startBtn.classList.add('start');
-        array.splice(0, array.length);
-        console.log(array, 'tableau vidé');
+        selectItems.innerHTML='';
+        arrayCode.splice(0, arrayCode.length);
+        console.log(arrayCode, 'tableau vidé');
     }
 }
-// codeGen(4,7);
-// P L A Y E R _ C O D E
-// function play(){
 
-// }
+// P L A Y E R _ C O D E
+function play(){
+
+}
