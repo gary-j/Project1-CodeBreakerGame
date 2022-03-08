@@ -18,6 +18,43 @@ section.settingsPanel {
       border: 1px solid black;
       display: flex;
       flex-direction: column;
+
+      .selectItems {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 40px;
+        background-color: blue;
+        div {
+          flex: 1;
+          background-color: rgb(208, 226, 208);
+          border: 1px solid rgb(167, 9, 167);
+          // padding: 1rem 0;
+          text-align: center;
+
+          &.item-0 {
+            background-color: blue;
+          }
+          &.item-1 {
+            background-color: red;
+          }
+          &.item-2 {
+            background-color: yellow;
+          }
+          &.item-3 {
+            background-color: green;
+          }
+          &.item-4 {
+            background-color: black;
+          }
+          &.item-5 {
+            background-color: rgb(5, 163, 255);
+          }
+          &.item-6 {
+            background-color: rgb(150, 21, 255);
+          }
+        }
+      }
     }
   }
 }

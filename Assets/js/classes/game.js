@@ -8,7 +8,7 @@ constructor(codeLength, variants){
     
 }
 
-createBoard();
-codeGenerator();
-checker();
+createBoard(){};
+codeGenerator(){};
+checker(){};
 }

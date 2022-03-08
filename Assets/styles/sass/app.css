@@ -128,5 +128,39 @@ section.settingsPanel .container .gameControls {
   display: flex;
   flex-direction: column;
 }
+section.settingsPanel .container .gameControls .selectItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 40px;
+  background-color: blue;
+}
+section.settingsPanel .container .gameControls .selectItems div {
+  flex: 1;
+  background-color: #d0e2d0;
+  border: 1px solid #a709a7;
+  text-align: center;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-0 {
+  background-color: blue;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-1 {
+  background-color: red;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-2 {
+  background-color: yellow;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-3 {
+  background-color: green;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-4 {
+  background-color: black;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-5 {
+  background-color: #05a3ff;
+}
+section.settingsPanel .container .gameControls .selectItems div.item-6 {
+  background-color: #9615ff;
+}
 
 /*# sourceMappingURL=app.css.map */
