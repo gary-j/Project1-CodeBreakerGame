@@ -8,10 +8,18 @@ section.settingsPanel {
     // justify-content: stretch;
     .settings {
       .codeLength {
+        display: flex;
+        justify-content: start;
       }
       .variants {
+        display: flex;
       }
       .chronometer {
+        button {
+          height: 2em;
+          vertical-align: center;
+          line-height: 0em;
+        }
       }
     }
     .gameControls {

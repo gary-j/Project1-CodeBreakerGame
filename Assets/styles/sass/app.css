@@ -152,12 +152,22 @@ main section.gameboard .container .row#secretCode div {
   background-color: black;
   border: 1px solid red;
 }
-main section.gameboard .container .row#playerTry div {
+main section.gameboard .container .row#playerTry div.cell {
   flex: 1;
   background-color: lightgreen;
   border: 1px solid violet;
   padding: 1rem 0;
   text-align: center;
+}
+main section.gameboard .container .row#playerTry div.checker {
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: none;
+}
+main section.gameboard .container .row#playerTry div.checker .diode {
+  border: 1px solid green;
+  flex: 1;
 }
 main section.gameboard .container #playerCode {
   border: 1px solid black;
@@ -204,6 +214,18 @@ section.settingsPanel {
 section.settingsPanel .container {
   display: flex;
   flex-direction: column;
+}
+section.settingsPanel .container .settings .codeLength {
+  display: flex;
+  justify-content: start;
+}
+section.settingsPanel .container .settings .variants {
+  display: flex;
+}
+section.settingsPanel .container .settings .chronometer button {
+  height: 2em;
+  vertical-align: center;
+  line-height: 0em;
 }
 section.settingsPanel .container .gameControls {
   border: 1px solid black;

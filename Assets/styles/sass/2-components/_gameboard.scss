@@ -32,12 +32,25 @@ main {
         }
 
         &#playerTry {
-          div {
+          div.cell {
             flex: 1;
             background-color: lightgreen;
             border: 1px solid violet;
             padding: 1rem 0;
             text-align: center;
+          }
+          div.checker {
+            flex: 1;
+            display: flex;
+            // flex-wrap: wrap;
+            flex-direction: column-reverse;
+            // justify-content: space-evenly;
+            // align-items: stretch;
+            background-color: none;
+            .diode {
+              border: 1px solid green;
+              flex: 1;
+            }
           }
         }
       }

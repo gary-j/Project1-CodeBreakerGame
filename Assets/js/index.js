@@ -33,6 +33,7 @@ const selectItems = document.querySelector('.selectItems');
 const arrayCode = [];
 let shuffledItems = [];
 const arrayToCheck = [];
+let tryCounter = 0;
 
 //
 let codeValue = 0;
@@ -41,7 +42,8 @@ let maxClickAllowed = 0;
 let clickCounter = 0
 let cellsPlayer = [];
 
-// S E T _ T H E _ G A M E _ B O A R D
+
+// G A M E _ B O A R D _ E L E M E N T
 const gameRows = document.querySelectorAll('#gameGrid .row');
 const rowSecretCode = document.getElementById('secretCode');
 const rowPlayerTry = document.getElementById('playerTry');
@@ -54,11 +56,30 @@ codeLength.forEach( button => {
 //     button.addEventListener('click', (e) => console.log(e));
 // });
 
+// R E S E T _ F U N C T I O N
+function reset(){
+    arrayCode = [];
+    shuffledItems = [];
+    arrayToCheck = [];
+    tryCounter = 0;
+
+    codeValue = 0;
+    itemsValue = 0;
+    maxClickAllowed = 0;
+    clickCounter = 0
+    cellsPlayer = [];
+
+    playerCode.innerHTML=''
+}
+
+// S E T _ T H E _ G A M E _ B O A R D
 function createBoard(e){
     let i = e.target.value;
-    maxClickAllowed = i;
+    maxClickAllowed = Number(i);
     cellsPlayer =[];
     playerCode.innerHTML='';
+    tryCounter=0;
+
     // console.log(maxClickAllowed, '  clicks allowed');
     //
     gameRows.forEach(row => {
@@ -66,11 +87,29 @@ function createBoard(e){
         row.innerHTML = '';
 
     // - Je crée les colonnes (cellules)
-        for (let j=0; j<i; j++){
-          let newCell = document.createElement('div');
-          newCell.classList.add('cell');
-          newCell.setAttribute('value',`${j}`);
-          row.appendChild(newCell);
+        for (let j=0; j<=i; j++){
+
+            if(j===+i){
+                let diodeCell = document.createElement('div');
+                  diodeCell.classList.add('checker');
+                  diodeCell.setAttribute('id',`try-${tryCounter}`);
+                // Pour les diodes insides checker cell
+                for(let diodes=0; diodes<i; diodes++){
+                    let diode = document.createElement('div');
+                   diode.classList.add('diode', `diode-${diodes}`);
+                   diode.setAttribute('id',`diode-${diodes}`),
+                   diode.setAttribute('value',`${diodes}`); 
+                   diodeCell.appendChild(diode);    
+                }
+              rowPlayerTry.appendChild(diodeCell);
+    
+              } else{
+
+                  let newCell = document.createElement('div');
+                  newCell.setAttribute('value',`${j}`);
+                  newCell.classList.add('cell');
+                  row.appendChild(newCell);
+                }
         }
     })
 
@@ -102,6 +141,7 @@ function createBoard(e){
 numOfItems.forEach( button => {
     button.addEventListener('click', (e) => itemsBoardValue(e)) ;
 });
+
 function itemsBoardValue(e){
     // reset
     selectItems.innerHTML='';
@@ -117,13 +157,18 @@ function itemsBoardValue(e){
        newItem.setAttribute('id',`item-${j}`)
        newItem.setAttribute('value',`${j}`);
 
-    // I don't appendChild the <div> I shuffle them after loop
+    // I don't appendChild the <div>  yet
+    //I shuffle them after loop
+
     //    selectItems.appendChild(newItem);
     //    newItem.addEventListener('click', (e)=> console.log(e));
+
        console.log(newItem, 'new item');
        divs.push(newItem);
     }
+
     // I shuffle the <div> display order
+    // with Fisher Yates Shuffle
     shuffledItems = shuffle(divs);
 
     shuffledItems.forEach(elem => {
@@ -131,8 +176,8 @@ function itemsBoardValue(e){
     // I add the event listener;
     //    elem.addEventListener('click', (e)=> console.log(e));
         elem.addEventListener('click', (e)=> play(e));
-
     });
+
     // I empty the divs array
     divs=[];
     
@@ -146,7 +191,6 @@ function itemsBoardValue(e){
 
 
 // C O D E _ G E N E R A T O R
-// with Fisher Yates Shuffle
 function codeGen(codeValue, itemsValue){
 
 // console.log(codeValue, itemsValue, 'code gen bien reçue');
@@ -156,8 +200,8 @@ let x = itemsValue;
 for(let j=0; j<i; j++){
     arrayCode.push(Math.floor(Math.random()*x));
 }
-    // console.log(arrayCode);
-    // return arrayCode
+    console.log(arrayCode);
+    return arrayCode
 }
 
 // S T A R T _ G A M E
@@ -189,11 +233,17 @@ function startGame(i, x){
         startBtn.textContent='START GAME';
         startBtn.classList.remove('reset')
         startBtn.classList.add('start');
-        // Reset
+        // Clear Board
         selectItems.innerHTML='';
+        rowSecretCode.innerHTML='';
+        rowPlayerTry.innerHTML='';
+        playerCode.innerHTML='';
+        // Reset
         arrayCode.splice(0, arrayCode.length);
         shuffledItems = [];
         clickCounter = 0;
+        tryCounter=0;
+
         console.log(arrayCode, 'tableau vidé');
     }
 }
@@ -204,13 +254,122 @@ function play(e){
     let btn = e;
     let btnValue = btn.target.attributes.value.textContent;
     console.log(clickCounter, 'avant exec');
-
+    console.log(maxClickAllowed, 'click max');
+    
     // Controle du nombre de clique
     if(clickCounter < maxClickAllowed){
+        // coloring the cell
         playerCode.children[clickCounter].classList.add(`item-${btnValue}`);
-    }else{
-        // appel de checker()
+        // change its value for the checker
+        playerCode.children[clickCounter].setAttribute('value',`${btnValue}`);
+        // Save move + ArraytoCheck
+        arrayToCheck.push(Number(playerCode.children[clickCounter].getAttribute('value')));
+
+        clickCounter++; 
+        console.log(clickCounter, 'compteur click actuel');
+
+        console.log(arrayToCheck, 'check this array');
+        console.log(arrayCode, 'avec ce code');
+
+        // Call the check
+        if(clickCounter === maxClickAllowed){
+            tryCounter++;
+            console.log(tryCounter, 'compteur row essai');
+            checker(arrayToCheck);
+        } 
     }
-    clickCounter++; console.log(clickCounter, 'en plus');
+}
+
+// C R E A T E _ C H E C K E R
+
+function checker(arrayToCheck){
+    console.log('Appel checker ok !');
+    //security :p
+    if((arrayToCheck.length !== arrayCode.length) || !arrayToCheck || !arrayCode){
+        return
+    }
+    //
+    let copyCheck=[...arrayToCheck];
+    let copyRealCode=[...arrayCode];
+    //
+    const lesDiodes = document.querySelectorAll('.diode');
+    let countPerfect = 0;
+    let countExist = 0;
+    let countNone = 0;
+
+    // 1. P E R F E C T - Does it exist at the right place? 
+    
+    copyCheck.forEach((elem, i) => {
+        console.log('tour:', i, '1ere boucle');
+
+        if(elem === arrayCode[i]){
+            copyCheck.splice(i,1,'!');
+            copyRealCode.splice(i,1,'!');
+            countPerfect++;
+
+            // console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
+        }
+    });
+    // Add 'perfect' class to diodes
+    for(let a=0; a<countPerfect; a++){
+        lesDiodes[a].classList.add('perfect');
+    }
+    console.log(copyCheck, 'copycheck après PERFECT');
+    console.log(copyRealCode, 'copyRealCode après PERFECT');
+
+    
+   // 2. E X I S T ? - Wrong place but exist.
+
+    // Sort the arrays
+    copyCheck.sort();
+    copyRealCode.sort();
+    console.log(copyCheck, 'copycheck sorted');
+    console.log(copyRealCode, 'copyRealCode sorted');
+
+    copyCheck.forEach((elem, i) => {
+        // Compare the existing pair 'exist'
+      
+        if(typeof(elem)==='number' && elem === copyRealCode[i]){ 
+            countExist++;
+
+            // Optional
+            copyCheck.splice(i,1,'?');
+            copyRealCode.splice(i,1,'?');
+        }
+        
+    });
+    console.log(copyCheck, 'copycheck after \'EXIST\'');
+    console.log(copyRealCode, 'copyRealCode after \'EXIST\'');
+
+    // Add class 'exist'
+    countNone = arrayCode.length - (countPerfect+countExist);
+    // console.log(countNone, 'countNone class');
+
+    for(let a=countPerfect; a<(arrayCode.length-countNone); a++){
+        lesDiodes[a].classList.add('exist');
+    }
+   
+    // Add class 'none'
+    for(let a=(countPerfect+countExist); a<arrayCode.length; a++){
+        lesDiodes[a].classList.add('none');
+    }
+    
+    console.log(lesDiodes, 'les diodes avec classes');
+
+    // IF GOOD => set checker cell diode => Win()
+    if(countPerfect === arrayCode.length){
+        console.log('YOU A CRACK ! ACCESS GRANTED');
+        // win();
+        //reset
+        reset();
+    }else{   
+    // IF WRONG => set checker cell diode => createRowTry()
+        // createRowTry();
+        //reset
+        countPerfect = 0;
+        countExist = 0;
+        countNone = 0;
+    }
 
 }
+
