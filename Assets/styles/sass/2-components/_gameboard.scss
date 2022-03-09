@@ -30,6 +30,36 @@ main {
           text-align: center;
         }
       }
+      #playerCode {
+        display: flex;
+        flex-direction: row;
+        height: 20px;
+
+        div {
+          flex: 1;
+          &.item-0 {
+            background-color: blue;
+          }
+          &.item-1 {
+            background-color: red;
+          }
+          &.item-2 {
+            background-color: yellow;
+          }
+          &.item-3 {
+            background-color: green;
+          }
+          &.item-4 {
+            background-color: black;
+          }
+          &.item-5 {
+            background-color: rgb(5, 163, 255);
+          }
+          &.item-6 {
+            background-color: rgb(150, 21, 255);
+          }
+        }
+      }
     }
   }
 }

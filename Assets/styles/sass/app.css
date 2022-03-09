@@ -152,6 +152,35 @@ main section.gameboard .container .row div {
   padding: 1rem 0;
   text-align: center;
 }
+main section.gameboard .container #playerCode {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+}
+main section.gameboard .container #playerCode div {
+  flex: 1;
+}
+main section.gameboard .container #playerCode div.item-0 {
+  background-color: blue;
+}
+main section.gameboard .container #playerCode div.item-1 {
+  background-color: red;
+}
+main section.gameboard .container #playerCode div.item-2 {
+  background-color: yellow;
+}
+main section.gameboard .container #playerCode div.item-3 {
+  background-color: green;
+}
+main section.gameboard .container #playerCode div.item-4 {
+  background-color: black;
+}
+main section.gameboard .container #playerCode div.item-5 {
+  background-color: #05a3ff;
+}
+main section.gameboard .container #playerCode div.item-6 {
+  background-color: #9615ff;
+}
 
 @media (max-width: 767px) {
   main {

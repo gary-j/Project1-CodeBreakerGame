@@ -37,9 +37,13 @@ const arrayToCheck = [];
 //
 let codeValue = 0;
 let itemsValue = 0;
+let maxClickAllowed = 0;
+let clickCounter = 0
+let cellsPlayer = [];
 
 // S E T _ T H E _ G A M E _ B O A R D
 const gameRows = document.querySelectorAll('#gameGrid .row');
+const playerCode =document.querySelector('#playerCode');
 //code length
 codeLength.forEach( button => {
     button.addEventListener('click', (e)=> createBoard(e))
@@ -49,6 +53,11 @@ codeLength.forEach( button => {
 // });
 function createBoard(e){
     let i = e.target.value;
+    maxClickAllowed = i;
+    cellsPlayer =[];
+    playerCode.innerHTML='';
+    // console.log(maxClickAllowed, '  clicks allowed');
+
     gameRows.forEach(row => {
         row.classList = (`row nbCol-${i}`);
         row.innerHTML = '';
@@ -57,9 +66,27 @@ function createBoard(e){
         for (let j = 0; j<i; j++){
           let newCell = document.createElement('div');
           newCell.classList.add('cell');
+          newCell.setAttribute('value',`${j}`);
           row.appendChild(newCell);
         }
     })
+
+    // PlayerCode row
+    for(let c=0; c<i; c++){
+        let cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.setAttribute('value',`${c}`);
+        cell.setAttribute('id',`${c}`)
+        // playerCode.appendChild(cell);
+        cellsPlayer.push(cell);
+    }
+    cellsPlayer.forEach(elem => {
+        playerCode.appendChild(elem);
+    // I add the event listener;
+        // elem.addEventListener('click', effacer la case);
+    });
+    
+    
     console.log(` ${i} à été ajouté !`);
 
     // return for the code generator
@@ -73,11 +100,12 @@ numOfItems.forEach( button => {
     button.addEventListener('click', (e) => itemsBoardValue(e)) ;
 });
 function itemsBoardValue(e){
-
+    // reset
     selectItems.innerHTML='';
     shuffledItems = [];
-    let x = e.target.value;
     let divs =[];
+
+    let x = e.target.value;
 
     for (let j=0; j<x; j++){
        let newItem = document.createElement('div');
@@ -98,7 +126,9 @@ function itemsBoardValue(e){
     shuffledItems.forEach(elem => {
         selectItems.appendChild(elem);
     // I add the event listener;
-       elem.addEventListener('click', (e)=> console.log(e));
+    //    elem.addEventListener('click', (e)=> console.log(e));
+        elem.addEventListener('click', (e)=> play(e));
+
     });
     // I empty the divs array
     divs=[];
@@ -106,7 +136,7 @@ function itemsBoardValue(e){
     // return for the code generator
     itemsValue = x;
     console.log(itemsValue, 'item value');
-    console.log(shuffledItems, 'shuffle items array');
+    // console.log(shuffledItems, 'shuffle items array');
     return itemsValue;
 }
 
@@ -156,14 +186,28 @@ function startGame(i, x){
         startBtn.textContent='START GAME';
         startBtn.classList.remove('reset')
         startBtn.classList.add('start');
+        // Reset
         selectItems.innerHTML='';
         arrayCode.splice(0, arrayCode.length);
         shuffledItems = [];
+        clickCounter = 0;
         console.log(arrayCode, 'tableau vidé');
     }
 }
 
 // P L A Y E R _ C O D E
-function play(){
+
+function play(e){
+    let btn = e;
+    let btnValue = btn.target.attributes.value.textContent;
+    console.log(clickCounter, 'avant exec');
+
+    // Controle du nombre de clique
+    if(clickCounter < maxClickAllowed){
+        playerCode.children[clickCounter].classList.add(`item-${btnValue}`);
+    }else{
+        // appel de checker()
+    }
+    clickCounter++; console.log(clickCounter, 'en plus');
 
 }
