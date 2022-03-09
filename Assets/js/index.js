@@ -43,6 +43,8 @@ let cellsPlayer = [];
 
 // S E T _ T H E _ G A M E _ B O A R D
 const gameRows = document.querySelectorAll('#gameGrid .row');
+const rowSecretCode = document.getElementById('secretCode');
+const rowPlayerTry = document.getElementById('playerTry');
 const playerCode =document.querySelector('#playerCode');
 //code length
 codeLength.forEach( button => {
@@ -51,19 +53,20 @@ codeLength.forEach( button => {
 // codeLength.forEach( button => {
 //     button.addEventListener('click', (e) => console.log(e));
 // });
+
 function createBoard(e){
     let i = e.target.value;
     maxClickAllowed = i;
     cellsPlayer =[];
     playerCode.innerHTML='';
     // console.log(maxClickAllowed, '  clicks allowed');
-
+    //
     gameRows.forEach(row => {
         row.classList = (`row nbCol-${i}`);
         row.innerHTML = '';
 
     // - Je crée les colonnes (cellules)
-        for (let j = 0; j<i; j++){
+        for (let j=0; j<i; j++){
           let newCell = document.createElement('div');
           newCell.classList.add('cell');
           newCell.setAttribute('value',`${j}`);
