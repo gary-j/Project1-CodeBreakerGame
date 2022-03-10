@@ -52,38 +52,42 @@ const gridPlayerTry = document.getElementById('gridPlayerTry');
 const playerCode = document.querySelector('#playerCode');
 //code length
 codeLength.forEach( button => {
-    button.addEventListener('click', (e)=> createBoard(e))
+    button.addEventListener('click', (e)=> createBoard(e.target.value))
 });
 // codeLength.forEach( button => {
 //     button.addEventListener('click', (e) => console.log(e));
 // });
 
 // R E S E T _ F U N C T I O N
+function resetBtn(){
+    gridPlayerTry.innerHTML='';
+}
+
 function reset(){
     arrayCode.splice(0, arrayCode.length);
     shuffledItems = [];
     arrayToCheck.splice(0, arrayToCheck.length);
-    tryCounter = 0;
 
-    codeValue = 0;
-    itemsValue = 0;
-    maxClickAllowed = 0;
+    tryCounter = 0;
     clickCounter = 0
     cellsPlayer = [];
 
-    playerCode.innerHTML=''
+    selectItems.innerHTML='';
+    // rowSecretCode.innerHTML='';
+    // gridPlayerTry.innerHTML='';
+    // playerCode.innerHTML=''
 }
 function rowReset(){
     clickCounter = 0;
     arrayToCheck.splice(0,arrayToCheck.length);
+    // playerCode.
 
 }
 
 // S E T _ T H E _ G A M E _ B O A R D
-function createBoard(e){
-    let i = e.target.value;
-    codeValue = e.target.value;
-    maxClickAllowed = Number(i);
+function createBoard(codeCount){
+    codeValue = codeCount;
+    maxClickAllowed = Number(codeCount);
     cellsPlayer =[];
     playerCode.innerHTML='';
     gridPlayerTry.innerHTML='';
@@ -92,12 +96,12 @@ function createBoard(e){
     // console.log(maxClickAllowed, '  clicks allowed');
 
     // set secretCode row
-    rowSecretCode.classList=(`row nbCol-${i}`)
+    rowSecretCode.classList=(`row nbCol-${codeCount}`)
     rowSecretCode.innerHTML='';
 
-    for (let j=0; j<=i; j++){
+    for (let j=0; j<=maxClickAllowed; j++){
 
-        if(j===+i){
+        if(j===maxClickAllowed){
             let diodeCell = document.createElement('div');
                 diodeCell.classList.add('checker');
                 diodeCell.setAttribute('id','secretChecker');
@@ -117,7 +121,7 @@ function createBoard(e){
     currentRow = createTryRow();
 
     // set PlayerCode row
-    for(let c=0; c<i; c++){
+    for(let c=0; c<maxClickAllowed; c++){
         let cell = document.createElement('div');
         cell.classList.add('cell');
         cell.setAttribute('value',`${c}`);
@@ -131,28 +135,27 @@ function createBoard(e){
         // elem.addEventListener('click', effacer la case);
     });
     
-    console.log(` ${i} à été ajouté !`);
+    console.log(` ${maxClickAllowed} à été ajouté !`);
 
     // return for the code generator
-    codeValue = i;
     console.log(codeValue, 'code value');
     return codeValue;
 }
 
 // set numb of variant
 numOfItems.forEach( button => {
-    button.addEventListener('click', (e) => itemsBoardValue(e)) ;
+    button.addEventListener('click', (e) => itemsBoardValue(e.target.value)) ;
 });
 
-function itemsBoardValue(e){
+function itemsBoardValue(variantCount){
     // reset
     selectItems.innerHTML='';
     shuffledItems = [];
     let divs =[];
 
-    let x = e.target.value;
+    // let variantCount = e.target.value;
 
-    for (let j=0; j<x; j++){
+    for (let j=0; j<variantCount; j++){
        let newItem = document.createElement('div');
        newItem.classList.add('item-btn');
        newItem.classList.add(`item-${j}`);
@@ -184,7 +187,7 @@ function itemsBoardValue(e){
     divs=[];
     
     // return for the code generator
-    itemsValue = x;
+    itemsValue = variantCount;
     console.log(itemsValue, 'item value');
     // console.log(shuffledItems, 'shuffle items array');
     return itemsValue;
@@ -208,45 +211,36 @@ for(let j=0; j<i; j++){
 
 // S T A R T _ G A M E
 startBtn.addEventListener('click',()=> {
-    if(codeValue && itemsValue){
+    // if(codeValue && itemsValue){
         let i = codeValue;
         let x = itemsValue;
         // console.log(i, x, 'ouais c\'est bon');
         startGame(i,x);
-    }else{
-        // throw console.error('please select a code length');
-        // displayError()
-        // or launch the game with default parameters
-        return
-    }
+
 } );
 
-function startGame(i, x){
+function startGame(codeCount, variantCount){
 //    console.log(i, x, 'de startgame');
     if(startBtn.classList.contains('start')){
+        itemsBoardValue(variantCount);
+        createBoard(codeCount);
 
         settingsPanel.style.display='none';
         startBtn.textContent='RESET';
         startBtn.classList.remove('start')
         startBtn.classList.add('reset');
-        codeGen(i, x);
+        codeGen(codeCount, variantCount);
     } else{
         settingsPanel.style.display='contents';
         startBtn.textContent='START GAME';
         startBtn.classList.remove('reset')
         startBtn.classList.add('start');
-        // Clear Board
-        selectItems.innerHTML='';
-        rowSecretCode.innerHTML='';
-        // rowPlayerTry.innerHTML='';
-        playerCode.innerHTML='';
-        // Reset
-        arrayCode.splice(0, arrayCode.length);
-        shuffledItems = [];
-        clickCounter = 0;
-        tryCounter=0;
 
+        rowReset();
+        resetBtn();
+        reset();
         console.log(arrayCode, 'tableau vidé');
+
     }
 }
 
@@ -270,6 +264,7 @@ function play(e){
         arrayToCheck.push(Number(playerCode.children[clickCounter].getAttribute('value')));
 
         clickCounter++; 
+
         console.log(clickCounter, 'compteur click actuel');
 
         console.log(arrayToCheck, 'check this array');
@@ -278,9 +273,22 @@ function play(e){
        
         // Call the check
         if(clickCounter === maxClickAllowed){
+            // Effacer playerCode
+            for(let i=0; i<codeValue; i++){
+                for(let j=0; j<itemsValue; j++){
+
+                    playerCode.children[i].classList.remove(`item-${j}`);
+                }
+            }
+
+            //augmenter le compteur d'essai
             tryCounter++;
             console.log(tryCounter, 'compteur row essai');
+
+            // Appel du checker
             checker(arrayToCheck);
+
+           
         } 
     }
 }
@@ -379,15 +387,12 @@ function checker(arrayToCheck){
         currentRow.classList.remove('hidden');
         previousRow = currentRow;
         currentRow = createTryRow();
-        // createTryRow();
 
         //reset diode
         // countPerfect = 0;
         // countExist = 0;
         // countNone = 0;
-        // while(lesDiodes.firstChild){
-        //     lesDiodes.removeChild(lesDiodes.firstChild)
-        // }
+    
         //reset for new row
         rowReset();
     }

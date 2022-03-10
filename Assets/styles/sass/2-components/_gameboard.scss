@@ -34,7 +34,7 @@ main {
       }
       #gridPlayerTry {
         // border: 1px solid orangered;
-        flex-direction: column-reverse;
+        flex-direction: column;
         .playerTry {
           &.hidden {
             display: none;
@@ -47,7 +47,7 @@ main {
           div.cell {
             flex: 1;
             background-color: lightgreen;
-            // border: 1px solid violet;
+            border: 1px solid black;
             padding: 1rem 0;
             text-align: center;
             &.item-0 {

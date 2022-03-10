@@ -153,7 +153,7 @@ main section.gameboard #gameGrid #secretCode div {
   background-color: black;
 }
 main section.gameboard #gameGrid #gridPlayerTry {
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry {
   flex: 1;
@@ -167,6 +167,7 @@ main section.gameboard #gameGrid #gridPlayerTry .playerTry.hidden {
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell {
   flex: 1;
   background-color: lightgreen;
+  border: 1px solid black;
   padding: 1rem 0;
   text-align: center;
 }
@@ -286,7 +287,6 @@ section.settingsPanel .container .gameControls .selectItems {
   flex-direction: row;
   flex-wrap: wrap;
   height: 40px;
-  background-color: blue;
 }
 section.settingsPanel .container .gameControls .selectItems div {
   flex: 1;
