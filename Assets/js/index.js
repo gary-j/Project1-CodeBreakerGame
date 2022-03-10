@@ -62,7 +62,7 @@ codeLength.forEach( button => {
 function reset(){
     arrayCode.splice(0, arrayCode.length);
     shuffledItems = [];
-    arrayToCheck = [];
+    arrayToCheck.splice(0, arrayToCheck.length);
     tryCounter = 0;
 
     codeValue = 0;
@@ -367,6 +367,8 @@ function checker(arrayToCheck){
 
     // IF GOOD => set checker cell diode => Win()
     if(countPerfect === arrayCode.length){
+        currentRow.classList.remove('hidden');
+
         console.log('YOU A CRACK ! ACCESS GRANTED');
         // win();
         //reset
