@@ -1,12 +1,9 @@
-import Game from "./classes/game.js";
-// import shuffle from "./shuffle.js";
 import {shuffle} from './shuffle.js';
+import {createTryRow} from './createTryRow.js';
+// import {colorizer} from './colorizer.js';
 
-const game = new Game();
 
-// EVENT LISTENER
-
-// SETTINGS PANEL
+// EVENT LISTENER _ SETTINGS PANEL
 const settingsPanel = document.querySelector('.container .settings');
 const code3 = document.getElementById('code3');
 const code4 = document.getElementById('code4');
@@ -34,6 +31,9 @@ const arrayCode = [];
 let shuffledItems = [];
 const arrayToCheck = [];
 let tryCounter = 0;
+let previousRow = [];
+let currentRow = []
+// export default {tryCounter}; // for createTryRow
 
 //
 let codeValue = 0;
@@ -41,13 +41,18 @@ let itemsValue = 0;
 let maxClickAllowed = 0;
 let clickCounter = 0
 let cellsPlayer = [];
+//
+allDiodesArray =[];
+
+export { tryCounter, codeValue, gridPlayerTry, clickCounter, maxClickAllowed, allDiodesArray};
 
 
 // G A M E _ B O A R D _ E L E M E N T
 const gameRows = document.querySelectorAll('#gameGrid .row');
 const rowSecretCode = document.getElementById('secretCode');
-const rowPlayerTry = document.getElementById('playerTry');
-const playerCode =document.querySelector('#playerCode');
+const gridPlayerTry = document.getElementById('gridPlayerTry');
+
+const playerCode = document.querySelector('#playerCode');
 //code length
 codeLength.forEach( button => {
     button.addEventListener('click', (e)=> createBoard(e))
@@ -71,49 +76,50 @@ function reset(){
 
     playerCode.innerHTML=''
 }
+function rowReset(){
+    clickCounter = 0;
+    arrayToCheck.splice(0,arrayToCheck.length);
+
+}
 
 // S E T _ T H E _ G A M E _ B O A R D
 function createBoard(e){
     let i = e.target.value;
+    codeValue = e.target.value;
     maxClickAllowed = Number(i);
     cellsPlayer =[];
     playerCode.innerHTML='';
+    gridPlayerTry.innerHTML='';
     tryCounter=0;
 
     // console.log(maxClickAllowed, '  clicks allowed');
-    //
-    gameRows.forEach(row => {
-        row.classList = (`row nbCol-${i}`);
-        row.innerHTML = '';
 
-    // - Je crée les colonnes (cellules)
-        for (let j=0; j<=i; j++){
+    // set secretCode row
+    rowSecretCode.classList=(`row nbCol-${i}`)
+    rowSecretCode.innerHTML='';
 
-            if(j===+i){
-                let diodeCell = document.createElement('div');
-                  diodeCell.classList.add('checker');
-                  diodeCell.setAttribute('id',`try-${tryCounter}`);
-                // Pour les diodes insides checker cell
-                for(let diodes=0; diodes<i; diodes++){
-                    let diode = document.createElement('div');
-                   diode.classList.add('diode', `diode-${diodes}`);
-                   diode.setAttribute('id',`diode-${diodes}`),
-                   diode.setAttribute('value',`${diodes}`); 
-                   diodeCell.appendChild(diode);    
-                }
-              rowPlayerTry.appendChild(diodeCell);
+    for (let j=0; j<=i; j++){
+
+        if(j===+i){
+            let diodeCell = document.createElement('div');
+                diodeCell.classList.add('checker');
+                diodeCell.setAttribute('id','secretChecker');
     
-              } else{
+            rowSecretCode.appendChild(diodeCell);
 
-                  let newCell = document.createElement('div');
-                  newCell.setAttribute('value',`${j}`);
-                  newCell.classList.add('cell');
-                  row.appendChild(newCell);
-                }
-        }
-    })
+            } else{
 
-    // PlayerCode row
+                let newCell = document.createElement('div');
+                newCell.setAttribute('value',`${j}`);
+                newCell.classList.add('cell');
+                rowSecretCode.appendChild(newCell);
+            }
+    }
+
+    // set try row (hidden. to be revealed if wrong code)
+    currentRow = createTryRow();
+
+    // set PlayerCode row
     for(let c=0; c<i; c++){
         let cell = document.createElement('div');
         cell.classList.add('cell');
@@ -128,7 +134,6 @@ function createBoard(e){
         // elem.addEventListener('click', effacer la case);
     });
     
-    
     console.log(` ${i} à été ajouté !`);
 
     // return for the code generator
@@ -137,7 +142,7 @@ function createBoard(e){
     return codeValue;
 }
 
-// numb of variant
+// set numb of variant
 numOfItems.forEach( button => {
     button.addEventListener('click', (e) => itemsBoardValue(e)) ;
 });
@@ -200,7 +205,7 @@ let x = itemsValue;
 for(let j=0; j<i; j++){
     arrayCode.push(Math.floor(Math.random()*x));
 }
-    console.log(arrayCode);
+    console.log(arrayCode,'le code généré');
     return arrayCode
 }
 
@@ -236,7 +241,7 @@ function startGame(i, x){
         // Clear Board
         selectItems.innerHTML='';
         rowSecretCode.innerHTML='';
-        rowPlayerTry.innerHTML='';
+        // rowPlayerTry.innerHTML='';
         playerCode.innerHTML='';
         // Reset
         arrayCode.splice(0, arrayCode.length);
@@ -260,6 +265,8 @@ function play(e){
     if(clickCounter < maxClickAllowed){
         // coloring the cell
         playerCode.children[clickCounter].classList.add(`item-${btnValue}`);
+        //
+        gridPlayerTry.children[tryCounter].children[clickCounter].classList.add(`item-${btnValue}`);
         // change its value for the checker
         playerCode.children[clickCounter].setAttribute('value',`${btnValue}`);
         // Save move + ArraytoCheck
@@ -271,6 +278,7 @@ function play(e){
         console.log(arrayToCheck, 'check this array');
         console.log(arrayCode, 'avec ce code');
 
+       
         // Call the check
         if(clickCounter === maxClickAllowed){
             tryCounter++;
@@ -291,8 +299,10 @@ function checker(arrayToCheck){
     //
     let copyCheck=[...arrayToCheck];
     let copyRealCode=[...arrayCode];
+    // let actualRow = document.getElementById('try')
     //
-    const lesDiodes = document.querySelectorAll('.diode');
+    let lesDiodes = document.querySelectorAll('.diode');
+    console.log(lesDiodes, 'les diodes');
     let countPerfect = 0;
     let countExist = 0;
     let countNone = 0;
@@ -307,7 +317,7 @@ function checker(arrayToCheck){
             copyRealCode.splice(i,1,'!');
             countPerfect++;
 
-            // console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
+            console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
         }
     });
     // Add 'perfect' class to diodes
@@ -364,12 +374,14 @@ function checker(arrayToCheck){
         reset();
     }else{   
     // IF WRONG => set checker cell diode => createRowTry()
-        // createRowTry();
-        //reset
-        countPerfect = 0;
-        countExist = 0;
-        countNone = 0;
-    }
+       
+        currentRow.classList.remove('hidden');
+        previousRow = currentRow;
+        currentRow = createTryRow();
+        // createTryRow();
 
+        //reset for new row
+        rowReset();
+    }
 }
 

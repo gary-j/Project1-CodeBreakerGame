@@ -49,25 +49,25 @@ section.settingsPanel {
           text-align: center;
 
           &.item-0 {
-            background-color: blue;
+            background-color: $item-0;
           }
           &.item-1 {
-            background-color: red;
+            background-color: $item-1;
           }
           &.item-2 {
-            background-color: yellow;
+            background-color: $item-2;
           }
           &.item-3 {
-            background-color: green;
+            background-color: $item-3;
           }
           &.item-4 {
-            background-color: black;
+            background-color: $item-4;
           }
           &.item-5 {
-            background-color: rgb(5, 163, 255);
+            background-color: $item-5;
           }
           &.item-6 {
-            background-color: rgb(150, 21, 255);
+            background-color: $item-6;
           }
         }
       }

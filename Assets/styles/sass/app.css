@@ -130,74 +130,115 @@ main section.gameboard {
   border: 1px solid blue;
   width: 60%;
 }
-main section.gameboard .container {
+main section.gameboard #gameGrid {
   border: 1px solid red;
   max-width: calc(100% - 2em);
   margin: 0 auto;
 }
-main section.gameboard .container h2 {
+main section.gameboard #gameGrid h2 {
   text-align: center;
 }
-main section.gameboard .container .row {
+main section.gameboard #gameGrid #secretCode,
+main section.gameboard #gameGrid #playerCode {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   height: 20px;
 }
-main section.gameboard .container .row#secretCode {
+main section.gameboard #gameGrid #secretCode {
   flex-wrap: nowrap;
 }
-main section.gameboard .container .row#secretCode div {
+main section.gameboard #gameGrid #secretCode div {
   flex: 1;
   background-color: black;
-  border: 1px solid red;
 }
-main section.gameboard .container .row#playerTry div.cell {
+main section.gameboard #gameGrid #gridPlayerTry {
+  flex-direction: column-reverse;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry {
+  flex: 1;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry.hidden {
+  display: none;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell {
   flex: 1;
   background-color: lightgreen;
-  border: 1px solid violet;
   padding: 1rem 0;
   text-align: center;
 }
-main section.gameboard .container .row#playerTry div.checker {
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-0 {
+  background-color: blue;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-1 {
+  background-color: red;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-2 {
+  background-color: yellow;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-3 {
+  background-color: green;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-4 {
+  background-color: black;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-5 {
+  background-color: #05a3ff;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-6 {
+  background-color: #9615ff;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker {
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
   background-color: none;
 }
-main section.gameboard .container .row#playerTry div.checker .diode {
-  border: 1px solid green;
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode {
+  border: 1px solid white;
   flex: 1;
 }
-main section.gameboard .container #playerCode {
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.perfect {
+  background-color: green;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.exist {
+  background-color: #06abf8;
+}
+main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.none {
+  background-color: grey;
+}
+main section.gameboard #gameGrid #playerCode {
   border: 1px solid black;
   display: flex;
   flex-direction: row;
   height: 20px;
 }
-main section.gameboard .container #playerCode div {
+main section.gameboard #gameGrid #playerCode div {
   flex: 1;
   border: 1px solid black;
 }
-main section.gameboard .container #playerCode div.item-0 {
+main section.gameboard #gameGrid #playerCode div.item-0 {
   background-color: blue;
 }
-main section.gameboard .container #playerCode div.item-1 {
+main section.gameboard #gameGrid #playerCode div.item-1 {
   background-color: red;
 }
-main section.gameboard .container #playerCode div.item-2 {
+main section.gameboard #gameGrid #playerCode div.item-2 {
   background-color: yellow;
 }
-main section.gameboard .container #playerCode div.item-3 {
+main section.gameboard #gameGrid #playerCode div.item-3 {
   background-color: green;
 }
-main section.gameboard .container #playerCode div.item-4 {
+main section.gameboard #gameGrid #playerCode div.item-4 {
   background-color: black;
 }
-main section.gameboard .container #playerCode div.item-5 {
+main section.gameboard #gameGrid #playerCode div.item-5 {
   background-color: #05a3ff;
 }
-main section.gameboard .container #playerCode div.item-6 {
+main section.gameboard #gameGrid #playerCode div.item-6 {
   background-color: #9615ff;
 }
 

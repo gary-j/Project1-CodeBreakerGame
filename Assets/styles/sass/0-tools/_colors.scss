@@ -1,0 +1,19 @@
+$item-0: blue;
+$item-1: red;
+$item-2: yellow;
+$item-3: green;
+$item-4: black;
+$item-5: rgb(5, 163, 255);
+$item-6: rgb(150, 21, 255);
+
+// $nbOfItem: 10;
+
+// @mixin background($item) {
+//   background-color: $item;
+// }
+
+// @for $i from 0 through 7 {
+//   div.item-#{$i} {
+//     background-color: item-#{$i};
+//   }
+// }
