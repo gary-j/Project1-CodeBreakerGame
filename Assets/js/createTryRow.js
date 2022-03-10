@@ -1,5 +1,5 @@
 // import rowPlayerTry from './index.js';
-import { tryCounter, codeValue, gridPlayerTry, allDiodesArray } from './index.js';
+import { tryCounter, codeValue, gridPlayerTry } from './index.js';
 
 function createTryRow(){
 

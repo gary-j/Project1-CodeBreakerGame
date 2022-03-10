@@ -42,9 +42,9 @@ let maxClickAllowed = 0;
 let clickCounter = 0
 let cellsPlayer = [];
 //
-allDiodesArray =[];
 
-export { tryCounter, codeValue, gridPlayerTry, clickCounter, maxClickAllowed, allDiodesArray};
+
+export { tryCounter, codeValue, gridPlayerTry, clickCounter, maxClickAllowed, };
 
 
 // G A M E _ B O A R D _ E L E M E N T
