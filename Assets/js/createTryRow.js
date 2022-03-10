@@ -27,7 +27,6 @@ function createTryRow(){
                 diode.setAttribute('value',`${diodes}`); 
                 diodeCell.appendChild(diode);    
             }
-            allDiodesArray.push(diodeCell);
             rowPlayerTry.appendChild(diodeCell);
 
             } else{

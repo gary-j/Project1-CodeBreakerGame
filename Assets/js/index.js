@@ -41,10 +41,7 @@ let itemsValue = 0;
 let maxClickAllowed = 0;
 let clickCounter = 0
 let cellsPlayer = [];
-//
-
-
-export { tryCounter, codeValue, gridPlayerTry, clickCounter, maxClickAllowed, };
+export { tryCounter, codeValue, gridPlayerTry, clickCounter, maxClickAllowed};
 
 
 // G A M E _ B O A R D _ E L E M E N T
@@ -63,7 +60,7 @@ codeLength.forEach( button => {
 
 // R E S E T _ F U N C T I O N
 function reset(){
-    arrayCode = [];
+    arrayCode.splice(0, arrayCode.length);
     shuffledItems = [];
     arrayToCheck = [];
     tryCounter = 0;
@@ -301,8 +298,10 @@ function checker(arrayToCheck){
     let copyRealCode=[...arrayCode];
     // let actualRow = document.getElementById('try')
     //
-    let lesDiodes = document.querySelectorAll('.diode');
-    console.log(lesDiodes, 'les diodes');
+    console.log(tryCounter, 'trycounter');
+
+    let lesDiodes = document.querySelectorAll(`#playerTry${tryCounter-1} .diode`);
+    console.log(lesDiodes);
     let countPerfect = 0;
     let countExist = 0;
     let countNone = 0;
@@ -374,12 +373,19 @@ function checker(arrayToCheck){
         reset();
     }else{   
     // IF WRONG => set checker cell diode => createRowTry()
-       
+       console.log(currentRow, 'current row');
         currentRow.classList.remove('hidden');
         previousRow = currentRow;
         currentRow = createTryRow();
         // createTryRow();
 
+        //reset diode
+        // countPerfect = 0;
+        // countExist = 0;
+        // countNone = 0;
+        // while(lesDiodes.firstChild){
+        //     lesDiodes.removeChild(lesDiodes.firstChild)
+        // }
         //reset for new row
         rowReset();
     }

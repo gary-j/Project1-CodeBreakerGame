@@ -155,59 +155,59 @@ main section.gameboard #gameGrid #secretCode div {
 main section.gameboard #gameGrid #gridPlayerTry {
   flex-direction: column-reverse;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry {
   flex: 1;
   height: fit-content;
   display: flex;
   flex-direction: row;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry.hidden {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry.hidden {
   display: none;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell {
   flex: 1;
   background-color: lightgreen;
   padding: 1rem 0;
   text-align: center;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-0 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-0 {
   background-color: blue;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-1 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-1 {
   background-color: red;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-2 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-2 {
   background-color: yellow;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-3 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-3 {
   background-color: green;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-4 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-4 {
   background-color: black;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-5 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-5 {
   background-color: #05a3ff;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.cell.item-6 {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-6 {
   background-color: #9615ff;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker {
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
   background-color: none;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode {
   border: 1px solid white;
   flex: 1;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.perfect {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.perfect {
   background-color: green;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.exist {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.exist {
   background-color: #06abf8;
 }
-main section.gameboard #gameGrid #gridPlayerTry #playerTry div.checker .diode.none {
+main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.none {
   background-color: grey;
 }
 main section.gameboard #gameGrid #playerCode {

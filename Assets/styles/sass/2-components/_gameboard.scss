@@ -35,7 +35,7 @@ main {
       #gridPlayerTry {
         // border: 1px solid orangered;
         flex-direction: column-reverse;
-        #playerTry {
+        .playerTry {
           &.hidden {
             display: none;
           }
