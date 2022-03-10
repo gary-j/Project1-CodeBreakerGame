@@ -28,7 +28,6 @@ function createTryRow(){
                 diodeCell.appendChild(diode);    
             }
             allDiodesArray.push(diodeCell);
-            console.log(allDiodesArray, 'ALL DIODES ARRAY l31');
             rowPlayerTry.appendChild(diodeCell);
 
             } else{
