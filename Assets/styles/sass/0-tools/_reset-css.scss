@@ -58,11 +58,12 @@ h5 {
 //   resize: none;
 // }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   @include brad(0.3rem);
   border: 0.2rem solid black;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 5rem;
+  width: 5rem;
 
   &:checked {
     background-color: black;

@@ -3,12 +3,23 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
+  h2,
+  h3 {
+    font-size: 1.2em;
+    text-align: center;
+    margin: 1em auto;
+    color: $glow-color;
+    text-shadow: 0 0 0.5em $glow-color;
+    letter-spacing: 0.1em;
+  }
   section.gameboard {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     width: 60%;
     #gameGrid {
-      border: 1px solid red;
+      // background-color: rgb(48, 48, 48);
+
+      border: 2px solid white;
+      border-radius: 4em;
       max-width: calc(100% - 2em);
       margin: 0 auto;
 
@@ -16,29 +27,39 @@ main {
         text-align: center;
       }
 
-      #secretCode,
-      #playerCode {
+      #secretCode {
+        background-color: rgb(48, 48, 48);
+
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
         flex-wrap: wrap;
-        height: 20px;
+        height: 4em;
       }
 
       #secretCode {
         flex-wrap: nowrap;
         div {
           flex: 1;
-          background-color: black;
-          // border: 1px solid red;
+          background-color: rgb(48, 48, 48);
+          border: 1px solid $glow-color;
+          color: $glow-color;
+          text-align: center;
+          text-shadow: 0 0 0.5em $glow-color;
         }
       }
       #gridPlayerTry {
         // border: 1px solid orangered;
+
         flex-direction: column;
         .playerTry {
+          background-color: rgb(48, 48, 48);
+
           &.hidden {
             display: none;
           }
+          margin: 1em auto;
           flex: 1;
           height: fit-content;
           // border: 1px solid rgb(14, 149, 228);
@@ -46,9 +67,9 @@ main {
           flex-direction: row;
           div.cell {
             flex: 1;
-            background-color: lightgreen;
-            border: 1px solid black;
-            padding: 1rem 0;
+            border: 1px solid $glow-color;
+            border-radius: 50%;
+            padding: 2em;
             text-align: center;
             &.item-0 {
               background-color: $item-0;
@@ -81,13 +102,13 @@ main {
               border: 1px solid white;
               flex: 1;
               &.perfect {
-                background-color: green;
+                background-color: $perfect;
               }
               &.exist {
-                background-color: rgb(6, 171, 248);
+                background-color: $exist;
               }
               &.none {
-                background-color: grey;
+                background-color: $none;
               }
             }
           }
@@ -95,34 +116,39 @@ main {
       }
 
       #playerCode {
-        border: 1px solid black;
         display: flex;
         flex-direction: row;
-        height: 20px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: 4em;
+        border: 1px solid $glow-color;
+        background-color: rgb(48, 48, 48);
 
         div {
+          background-color: white;
           flex: 1;
-          border: 1px solid black;
+          border: 1px solid $glow-color;
+          border-radius: 50%;
           &.item-0 {
-            background-color: blue;
+            background-color: $item-0;
           }
           &.item-1 {
-            background-color: red;
+            background-color: $item-1;
           }
           &.item-2 {
-            background-color: yellow;
+            background-color: $item-2;
           }
           &.item-3 {
-            background-color: green;
+            background-color: $item-3;
           }
           &.item-4 {
-            background-color: black;
+            background-color: $item-4;
           }
           &.item-5 {
-            background-color: rgb(5, 163, 255);
+            background-color: $item-5;
           }
           &.item-6 {
-            background-color: rgb(150, 21, 255);
+            background-color: $item-6;
           }
         }
       }

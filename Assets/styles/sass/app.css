@@ -51,15 +51,17 @@ h5 {
   hyphens: auto;
 }
 
-input[type=checkbox] {
+input[type=checkbox],
+input[type=radio] {
   -webkit-border-radius: 0.3rem;
   -moz-border-radius: 0.3rem;
   border-radius: 0.3rem;
   border: 0.2rem solid black;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 5rem;
+  width: 5rem;
 }
-input[type=checkbox]:checked {
+input[type=checkbox]:checked,
+input[type=radio]:checked {
   background-color: black;
 }
 
@@ -78,20 +80,16 @@ p {
 
 /* From cssbuttons.io */
 button {
-  --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgba(100, 61, 136, 0.365);
-  border: 0.25em solid var(--glow-color);
+  border: 0.25em solid #d9b0ff;
   padding: 1em 3em;
-  color: var(--glow-color);
+  color: #d9b0ff;
   font-size: 15px;
   font-weight: bold;
-  background-color: var(--btn-color);
+  background-color: rgba(100, 61, 136, 0.365);
   border-radius: 1em;
   outline: none;
-  box-shadow: 0 0 1em 0.25em var(--glow-color), 0 0 0em 0em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
-  text-shadow: 0 0 0.5em var(--glow-color);
+  box-shadow: 0 0 1em 0.25em #d9b0ff, 0 0 0em 0em rgba(191, 123, 255, 0.78), inset 0 0 0.75em 0.25em #d9b0ff;
+  text-shadow: 0 0 0.5em #d9b0ff;
   position: relative;
   transition: all 0.3s;
 }
@@ -104,20 +102,48 @@ button::after {
   left: 0;
   height: 1%;
   width: 10%;
-  background-color: var(--glow-spread-color);
+  background-color: rgba(191, 123, 255, 0.78);
   filter: blur(2em);
   opacity: 0.7;
   transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
 }
 
 button:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em 0em var(--glow-color), 0 0 1em 0em var(--glow-spread-color), inset 0 0 0.75em 0.25em var(--glow-color);
+  color: rgba(100, 61, 136, 0.365);
+  background-color: #d9b0ff;
+  box-shadow: 0 0 1em 0em #d9b0ff, 0 0 1em 0em rgba(191, 123, 255, 0.78), inset 0 0 0.75em 0.25em #d9b0ff;
 }
 
 button:active {
-  box-shadow: 0 0 0.6em 0.25em var(--glow-color), 0 0 2.5em 2em var(--glow-spread-color), inset 0 0 0.5em 0.25em var(--glow-color);
+  box-shadow: 0 0 0.6em 0.25em #d9b0ff, 0 0 2.5em 2em rgba(191, 123, 255, 0.78), inset 0 0 0.5em 0.25em #d9b0ff;
+}
+
+/* From cssbuttons.io */
+input::after {
+  border-radius: 50%;
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 1%;
+  width: 10%;
+  background-color: rgba(191, 123, 255, 0.78);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+input:hover {
+  border-radius: 50%;
+  color: rgba(100, 61, 136, 0.365);
+  background-color: #d9b0ff;
+  box-shadow: 0 0 1em 0em #d9b0ff, 0 0 1em 0em rgba(191, 123, 255, 0.78), inset 0 0 0.75em 0.25em #d9b0ff;
+}
+
+input:active {
+  border-radius: 50%;
+  box-shadow: 0 0 0.6em 0.25em #d9b0ff, 0 0 2.5em 2em rgba(191, 123, 255, 0.78), inset 0 0 0.5em 0.25em #d9b0ff;
 }
 
 main {
@@ -126,36 +152,53 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
 }
+main h2,
+main h3 {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 1em auto;
+  color: #d9b0ff;
+  text-shadow: 0 0 0.5em #d9b0ff;
+  letter-spacing: 0.1em;
+}
 main section.gameboard {
-  border: 1px solid blue;
   width: 60%;
 }
 main section.gameboard #gameGrid {
-  border: 1px solid red;
+  border: 2px solid white;
+  border-radius: 4em;
   max-width: calc(100% - 2em);
   margin: 0 auto;
 }
 main section.gameboard #gameGrid h2 {
   text-align: center;
 }
-main section.gameboard #gameGrid #secretCode,
-main section.gameboard #gameGrid #playerCode {
+main section.gameboard #gameGrid #secretCode {
+  background-color: #303030;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
-  height: 20px;
+  height: 4em;
 }
 main section.gameboard #gameGrid #secretCode {
   flex-wrap: nowrap;
 }
 main section.gameboard #gameGrid #secretCode div {
   flex: 1;
-  background-color: black;
+  background-color: #303030;
+  border: 1px solid #d9b0ff;
+  color: #d9b0ff;
+  text-align: center;
+  text-shadow: 0 0 0.5em #d9b0ff;
 }
 main section.gameboard #gameGrid #gridPlayerTry {
   flex-direction: column;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry {
+  background-color: #303030;
+  margin: 1em auto;
   flex: 1;
   height: fit-content;
   display: flex;
@@ -166,31 +209,31 @@ main section.gameboard #gameGrid #gridPlayerTry .playerTry.hidden {
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell {
   flex: 1;
-  background-color: lightgreen;
-  border: 1px solid black;
-  padding: 1rem 0;
+  border: 1px solid #d9b0ff;
+  border-radius: 50%;
+  padding: 2em;
   text-align: center;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-0 {
-  background-color: blue;
+  background-color: #8300ff;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-1 {
-  background-color: red;
+  background-color: #ff8300;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-2 {
-  background-color: yellow;
+  background-color: #1289a7;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-3 {
-  background-color: green;
+  background-color: #00ff83;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-4 {
-  background-color: black;
+  background-color: #ff00fc;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-5 {
-  background-color: #05a3ff;
+  background-color: #0300ff;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.cell.item-6 {
-  background-color: #9615ff;
+  background-color: #000000;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker {
   flex: 1;
@@ -203,44 +246,49 @@ main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode {
   flex: 1;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.perfect {
-  background-color: green;
+  background-color: #00ff03;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.exist {
-  background-color: #06abf8;
+  background-color: #ffffff;
 }
 main section.gameboard #gameGrid #gridPlayerTry .playerTry div.checker .diode.none {
-  background-color: grey;
+  background-color: #858585;
 }
 main section.gameboard #gameGrid #playerCode {
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
-  height: 20px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 4em;
+  border: 1px solid #d9b0ff;
+  background-color: #303030;
 }
 main section.gameboard #gameGrid #playerCode div {
+  background-color: white;
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid #d9b0ff;
+  border-radius: 50%;
 }
 main section.gameboard #gameGrid #playerCode div.item-0 {
-  background-color: blue;
+  background-color: #8300ff;
 }
 main section.gameboard #gameGrid #playerCode div.item-1 {
-  background-color: red;
+  background-color: #ff8300;
 }
 main section.gameboard #gameGrid #playerCode div.item-2 {
-  background-color: yellow;
+  background-color: #1289a7;
 }
 main section.gameboard #gameGrid #playerCode div.item-3 {
-  background-color: green;
+  background-color: #00ff83;
 }
 main section.gameboard #gameGrid #playerCode div.item-4 {
-  background-color: black;
+  background-color: #ff00fc;
 }
 main section.gameboard #gameGrid #playerCode div.item-5 {
-  background-color: #05a3ff;
+  background-color: #0300ff;
 }
 main section.gameboard #gameGrid #playerCode div.item-6 {
-  background-color: #9615ff;
+  background-color: #000000;
 }
 
 @media (max-width: 767px) {
@@ -250,27 +298,55 @@ main section.gameboard #gameGrid #playerCode div.item-6 {
 }
 section.settingsPanel {
   width: 40%;
-  height: 60vh;
-  background-color: grey;
+  height: fit-content;
 }
 section.settingsPanel .container {
+  background-color: #303030;
+  border: 2px solid white;
+  border-radius: 4em;
   display: flex;
   flex-direction: column;
 }
-section.settingsPanel .container .settings .codeLength {
+section.settingsPanel .container .settings .setter {
   display: flex;
-  justify-content: start;
+  justify-content: space-around;
 }
-section.settingsPanel .container .settings .variants {
-  display: flex;
+section.settingsPanel .container .settings .setter div.length {
+  position: relative;
+  border-radius: 50%;
+}
+section.settingsPanel .container .settings .setter div.length input {
+  border: 0.5rem solid #d9b0ff;
+  background-color: transparent;
+}
+section.settingsPanel .container .settings .setter div.length input:checked {
+  border: 0.5rem solid #d9b0ff;
+}
+section.settingsPanel .container .settings .setter div.length label {
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #d9b0ff;
+  font-size: 1em;
+  font-weight: 700;
+  text-shadow: 0 0 0.5em #d9b0ff;
 }
 section.settingsPanel .container .settings .chronometer button {
   height: 2em;
   vertical-align: center;
   line-height: 0em;
 }
+section.settingsPanel .container .settings div.separator {
+  width: 50%;
+  border-width: 3px 0 0;
+  border-top-style: solid;
+  border-image: linear-gradient(139deg, #d9b0ff, white, rgba(100, 61, 136, 0.365), #d9b0ff) 3;
+  margin: 2em auto;
+}
 section.settingsPanel .container .gameControls {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
@@ -293,25 +369,25 @@ section.settingsPanel .container .gameControls .selectItems div {
   text-align: center;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-0 {
-  background-color: blue;
+  background-color: #8300ff;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-1 {
-  background-color: red;
+  background-color: #ff8300;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-2 {
-  background-color: yellow;
+  background-color: #1289a7;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-3 {
-  background-color: green;
+  background-color: #00ff83;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-4 {
-  background-color: black;
+  background-color: #ff00fc;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-5 {
-  background-color: #05a3ff;
+  background-color: #0300ff;
 }
 section.settingsPanel .container .gameControls .selectItems div.item-6 {
-  background-color: #9615ff;
+  background-color: #000000;
 }
 
 /*# sourceMappingURL=app.css.map */

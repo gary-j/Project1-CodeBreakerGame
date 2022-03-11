@@ -105,6 +105,7 @@ function createBoard(codeCount){
             let diodeCell = document.createElement('div');
                 diodeCell.classList.add('checker');
                 diodeCell.setAttribute('id','secretChecker');
+                diodeCell.textContent='checker';
     
             rowSecretCode.appendChild(diodeCell);
 
@@ -113,6 +114,7 @@ function createBoard(codeCount){
                 let newCell = document.createElement('div');
                 newCell.setAttribute('value',`${j}`);
                 newCell.classList.add('cell');
+                newCell.textContent='?';
                 rowSecretCode.appendChild(newCell);
             }
     }
@@ -377,22 +379,18 @@ function checker(arrayToCheck){
     if(countPerfect === arrayCode.length){
         currentRow.classList.remove('hidden');
 
-        console.log('YOU A CRACK ! ACCESS GRANTED');
+        // let winGame = ()=> window.alert('YOU A CRACK ! ACCESS GRANTED !');
+        window.alert('YOU A CRACK ! ACCESS GRANTED !');
+        console.log('YOU A CRACK ! ACCESS GRANTED !');
         // win();
         //reset
-        reset();
+        // reset();
     }else{   
     // IF WRONG => set checker cell diode => createRowTry()
        console.log(currentRow, 'current row');
         currentRow.classList.remove('hidden');
         previousRow = currentRow;
         currentRow = createTryRow();
-
-        //reset diode
-        // countPerfect = 0;
-        // countExist = 0;
-        // countNone = 0;
-    
         //reset for new row
         rowReset();
     }

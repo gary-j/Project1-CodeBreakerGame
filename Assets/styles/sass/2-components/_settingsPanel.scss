@@ -1,18 +1,52 @@
 section.settingsPanel {
   width: 40%;
-  height: 60vh;
-  background-color: grey;
+  height: fit-content;
+  // background-color: grey;
   .container {
+    background-color: rgb(48, 48, 48);
+    border: 2px solid white;
+
+    border-radius: 4em;
     display: flex;
     flex-direction: column;
     // justify-content: stretch;
+
     .settings {
-      .codeLength {
+      .setter {
         display: flex;
-        justify-content: start;
-      }
-      .variants {
-        display: flex;
+        justify-content: space-around;
+        div.length {
+          position: relative;
+          border-radius: 50%;
+
+          input {
+            border: 0.5rem solid $glow-color;
+            background-color: transparent;
+
+            &:checked {
+              // background-color: $glow-color;
+              // filter: invert(100%) hue-rotate(18deg) brightness(1.7);
+              border: 0.5rem solid $glow-color;
+            }
+          }
+          label {
+            border-radius: 50%;
+
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $glow-color;
+            font-size: 1em;
+            font-weight: 700;
+            text-shadow: 0 0 0.5em $glow-color;
+          }
+        }
+        &.codeLength {
+        }
+        &.variants {
+        }
       }
       .chronometer {
         button {
@@ -21,9 +55,23 @@ section.settingsPanel {
           line-height: 0em;
         }
       }
+      div.separator {
+        width: 50%;
+        border-width: 3px 0 0;
+        border-top-style: solid;
+        border-image: linear-gradient(
+            139deg,
+            $glow-color,
+            white,
+            $btn-color,
+            $glow-color
+          )
+          3;
+        margin: 2em auto;
+      }
     }
     .gameControls {
-      border: 1px solid black;
+      // border: 1px solid black;
       display: flex;
       flex-direction: column;
       div {
