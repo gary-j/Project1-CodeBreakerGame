@@ -71,15 +71,12 @@ section.settingsPanel {
       }
     }
     .gameControls {
-      // border: 1px solid black;
       display: flex;
       flex-direction: column;
-      div {
-        width: 100%;
+      div.startBtn {
+        margin: auto;
         button {
-          margin: 1em auto;
           flex: 1;
-          width: 100%;
         }
       }
 

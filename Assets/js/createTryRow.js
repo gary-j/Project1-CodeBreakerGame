@@ -1,5 +1,5 @@
 // import rowPlayerTry from './index.js';
-import { tryCounter, codeValue, gridPlayerTry } from './index.js';
+import { tryCounter, codeValue, gridPlayerTry, } from './index.js';
 
 function createTryRow(){
 
@@ -17,12 +17,12 @@ function createTryRow(){
 
         if(j===+i){
             let diodeCell = document.createElement('div');
-                diodeCell.classList.add('checker');
+                diodeCell.classList.add('checker','cell',`col-${codeValue}`,'row-diode');
                 diodeCell.setAttribute('id',`try-${tryCounter}`);
             // Pour les diodes insides checker cell
             for(let diodes=0; diodes<i; diodes++){
                 let diode = document.createElement('div');
-                diode.classList.add('diode', `diode-${diodes}`);
+                diode.classList.add('diode', `diode-${diodes}`,`diode-col-${codeValue}`);
                 diode.setAttribute('id',`diode-${diodes}`),
                 diode.setAttribute('value',`${diodes}`); 
                 diodeCell.appendChild(diode);    
@@ -33,7 +33,7 @@ function createTryRow(){
 
                 let newCell = document.createElement('div');
                 newCell.setAttribute('value',`${j}`);
-                newCell.classList.add('cell');
+                newCell.classList.add('cell',`col-${codeValue}`);
                 rowPlayerTry.appendChild(newCell);
             }
     }

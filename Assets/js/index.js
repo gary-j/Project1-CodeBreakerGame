@@ -96,14 +96,14 @@ function createBoard(codeCount){
     // console.log(maxClickAllowed, '  clicks allowed');
 
     // set secretCode row
-    rowSecretCode.classList=(`row nbCol-${codeCount}`)
+    rowSecretCode.classList=('row','secretCode')
     rowSecretCode.innerHTML='';
 
     for (let j=0; j<=maxClickAllowed; j++){
 
         if(j===maxClickAllowed){
             let diodeCell = document.createElement('div');
-                diodeCell.classList.add('checker');
+                diodeCell.classList.add('checker','cell',`col-${codeCount}`);
                 diodeCell.setAttribute('id','secretChecker');
                 diodeCell.textContent='checker';
     
@@ -113,7 +113,7 @@ function createBoard(codeCount){
 
                 let newCell = document.createElement('div');
                 newCell.setAttribute('value',`${j}`);
-                newCell.classList.add('cell');
+                newCell.classList.add('cell',`col-${codeCount}`);
                 newCell.textContent='?';
                 rowSecretCode.appendChild(newCell);
             }
@@ -123,9 +123,11 @@ function createBoard(codeCount){
     currentRow = createTryRow();
 
     // set PlayerCode row
+    playerCode.classList=('row','playerCode');
+    playerCode.innerHTML='';
     for(let c=0; c<maxClickAllowed; c++){
         let cell = document.createElement('div');
-        cell.classList.add('cell');
+        cell.classList.add('cell',`col-${codeCount}`);
         cell.setAttribute('value',`${c}`);
         cell.setAttribute('id',`${c}`)
         // playerCode.appendChild(cell);

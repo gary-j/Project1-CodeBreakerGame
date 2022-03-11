@@ -1,76 +1,136 @@
-main {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  h2,
-  h3 {
-    font-size: 1.2em;
+body {
+  h1 {
+    font-size: 4em;
     text-align: center;
-    margin: 1em auto;
-    color: $glow-color;
-    text-shadow: 0 0 0.5em $glow-color;
-    letter-spacing: 0.1em;
   }
-  section.gameboard {
-    // border: 1px solid blue;
-    width: 60%;
-    #gameGrid {
-      // background-color: rgb(48, 48, 48);
+  main {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    h2,
+    h3 {
+      font-size: 1.2em;
+      text-align: center;
+      margin: 1em auto;
+      color: $glow-color;
+      text-shadow: 0 0 0.5em $glow-color;
+      letter-spacing: 0.1em;
+    }
+    section.gameboard {
+      // border: 1px solid blue;
+      width: 60%;
+      #gameGrid {
+        // background-color: rgb(48, 48, 48);
 
-      border: 2px solid white;
-      border-radius: 4em;
-      max-width: calc(100% - 2em);
-      margin: 0 auto;
+        border: 2px solid white;
+        border-radius: 4em;
+        max-width: calc(100% - 2em);
+        margin: 0 auto;
 
-      h2 {
-        text-align: center;
-      }
-
-      #secretCode {
-        background-color: rgb(48, 48, 48);
-
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        height: 4em;
-      }
-
-      #secretCode {
-        flex-wrap: nowrap;
-        div {
-          flex: 1;
-          background-color: rgb(48, 48, 48);
-          border: 1px solid $glow-color;
-          color: $glow-color;
+        h2 {
           text-align: center;
-          text-shadow: 0 0 0.5em $glow-color;
         }
-      }
-      #gridPlayerTry {
-        // border: 1px solid orangered;
 
-        flex-direction: column;
-        .playerTry {
+        #secretCode {
           background-color: rgb(48, 48, 48);
 
-          &.hidden {
-            display: none;
-          }
-          margin: 1em auto;
-          flex: 1;
-          height: fit-content;
-          // border: 1px solid rgb(14, 149, 228);
           display: flex;
           flex-direction: row;
-          div.cell {
+          justify-content: space-around;
+          align-items: center;
+          flex-wrap: wrap;
+          height: 4em;
+          div {
+            // flex: 1;
+            background-color: rgb(48, 48, 48);
+            border: 1px solid $glow-color;
+            color: $glow-color;
+            text-align: center;
+            text-shadow: 0 0 0.5em $glow-color;
+          }
+        }
+        #gridPlayerTry {
+          // border: 1px solid orangered;
+          flex-direction: column;
+          .playerTry {
+            background-color: rgb(48, 48, 48);
+
+            padding: 1em;
+
+            &.hidden {
+              display: none;
+            }
+            // margin: 1em auto;
+            // flex: 1;
+            height: fit-content;
+            // border: 1px solid rgb(14, 149, 228);
+            display: flex;
+            flex-direction: row;
+            div.cell {
+              // flex: 1;
+              // border: 1px solid $glow-color;
+              border-radius: 50%;
+              padding: 2em;
+              text-align: center;
+              &.item-0 {
+                background-color: $item-0;
+              }
+              &.item-1 {
+                background-color: $item-1;
+              }
+              &.item-2 {
+                background-color: $item-2;
+              }
+              &.item-3 {
+                background-color: $item-3;
+              }
+              &.item-4 {
+                background-color: $item-4;
+              }
+              &.item-5 {
+                background-color: $item-5;
+              }
+              &.item-6 {
+                background-color: $item-6;
+              }
+            }
+            div.checker {
+              // flex: 1;
+              display: flex;
+              flex-direction: column-reverse;
+              background-color: none;
+              .diode {
+                border: 1px solid white;
+                flex: 1;
+                &.perfect {
+                  background-color: $perfect;
+                }
+                &.exist {
+                  background-color: $exist;
+                }
+                &.none {
+                  background-color: $none;
+                }
+              }
+            }
+          }
+        }
+
+        #playerCode {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          height: 4em;
+          border: 1px solid $glow-color;
+          // background-color: rgb(48, 48, 48);
+
+          div {
+            background-color: white;
             flex: 1;
             border: 1px solid $glow-color;
             border-radius: 50%;
-            padding: 2em;
-            text-align: center;
             &.item-0 {
               background-color: $item-0;
             }
@@ -93,72 +153,35 @@ main {
               background-color: $item-6;
             }
           }
-          div.checker {
-            flex: 1;
-            display: flex;
-            flex-direction: column-reverse;
-            background-color: none;
-            .diode {
-              border: 1px solid white;
-              flex: 1;
-              &.perfect {
-                background-color: $perfect;
-              }
-              &.exist {
-                background-color: $exist;
-              }
-              &.none {
-                background-color: $none;
-              }
-            }
-          }
         }
-      }
+        .row {
+          display: flex;
+          flex-wrap: wrap;
 
-      #playerCode {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        height: 4em;
-        border: 1px solid $glow-color;
-        background-color: rgb(48, 48, 48);
+          .col-4 {
+            flex: 0 0 calc(100% / 12 * 4);
+          }
 
-        div {
-          background-color: white;
-          flex: 1;
-          border: 1px solid $glow-color;
-          border-radius: 50%;
-          &.item-0 {
-            background-color: $item-0;
+          .col-3 {
+            flex: 0 0 calc(100% / 12 * 3);
           }
-          &.item-1 {
-            background-color: $item-1;
+
+          .col-2 {
+            flex: 0 0 calc(100% / 12 * 2);
           }
-          &.item-2 {
-            background-color: $item-2;
-          }
-          &.item-3 {
-            background-color: $item-3;
-          }
-          &.item-4 {
-            background-color: $item-4;
-          }
-          &.item-5 {
-            background-color: $item-5;
-          }
-          &.item-6 {
-            background-color: $item-6;
+
+          .col-1 {
+            flex: 0 0 calc(100% / 12 * 1);
           }
         }
       }
     }
   }
-}
 
-@media (max-width: 767px) {
-  main {
-    flex-direction: column;
-    // ou le settins panel en toggle ou display none
+  @media (max-width: 767px) {
+    main {
+      flex-direction: column;
+      // ou le settins panel en toggle ou display none
+    }
   }
 }
