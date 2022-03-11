@@ -267,7 +267,7 @@ body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretCheck
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode,
 body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode {
   width: 100%;
-  padding-top: 1em;
+  border-bottom: 1px solid #d9b0ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.col-6,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.col-6,
