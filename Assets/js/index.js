@@ -331,15 +331,8 @@ function checker(arrayToCheck){
             console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
         }
     });
-    // Add 'perfect' class to diodes
-    for(let a=0; a<countPerfect; a++){
-        lesDiodes[a].classList.add('perfect');
-    }
-    console.log(copyCheck, 'copycheck après PERFECT');
-    console.log(copyRealCode, 'copyRealCode après PERFECT');
 
-    
-   // 2. E X I S T ? - Wrong place but exist.
+    // 2. E X I S T ? - Wrong place but exist.
 
     // Sort the arrays
     copyCheck.sort();
@@ -353,7 +346,6 @@ function checker(arrayToCheck){
         if(typeof(elem)==='number' && elem === copyRealCode[i]){ 
             countExist++;
 
-            // Optional
             copyCheck.splice(i,1,'?');
             copyRealCode.splice(i,1,'?');
         }
@@ -362,21 +354,45 @@ function checker(arrayToCheck){
     console.log(copyCheck, 'copycheck after \'EXIST\'');
     console.log(copyRealCode, 'copyRealCode after \'EXIST\'');
 
-    // Add class 'exist'
+    // Sort the arrays again
+    copyCheck.sort();
+    copyRealCode.sort();
+    console.log(copyCheck, copyRealCode, 'SORTED BEFORE NOT IN THE CODE');
+
+    // 3.  N O T _ I N _ T H E _ C O D E
+    copyCheck.forEach((elem, i) => {
+        // Compare the existing pair 'exist'
+      
+        if(typeof(elem)==='number' && !copyRealCode.includes(elem)){ 
+            countNone++;
+        }
+        
+    });
+
+
+    // A D D I N G _ C L A S S E S _ T O _ D I O D E
+
+    // Add 'perfect' class to diodes
+     for(let a=0; a<countPerfect; a++){
+        lesDiodes[a].classList.add('perfect');
+    }
+    console.log(copyCheck, 'copycheck après PERFECT');
+    console.log(copyRealCode, 'copyRealCode après PERFECT');
+    console.log(lesDiodes, 'les diodes avec classes');
+
+    // Add 'exist' class to diode
     countNone = arrayCode.length - (countPerfect+countExist);
-    // console.log(countNone, 'countNone class');
 
     for(let a=countPerfect; a<(arrayCode.length-countNone); a++){
         lesDiodes[a].classList.add('exist');
     }
-   
-    // Add class 'none'
-    for(let a=(countPerfect+countExist); a<arrayCode.length; a++){
+    
+    // console.log(countNone, 'countNone class');
+    // Add 'none'. class to be fixed
+     for(let a=(countPerfect+countExist); a<arrayCode.length; a++){
         lesDiodes[a].classList.add('none');
     }
     
-    console.log(lesDiodes, 'les diodes avec classes');
-
     // IF GOOD => set checker cell diode => Win()
     if(countPerfect === arrayCode.length){
         currentRow.classList.remove('hidden');
