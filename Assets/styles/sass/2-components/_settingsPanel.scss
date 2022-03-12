@@ -6,7 +6,7 @@ section.settingsPanel {
     background-color: rgb(48, 48, 48);
     border: 2px solid white;
 
-    border-radius: 4em;
+    border-radius: 1em;
     display: flex;
     flex-direction: column;
     // justify-content: stretch;
@@ -71,6 +71,7 @@ section.settingsPanel {
       }
     }
     .gameControls {
+      padding-top: 2em;
       display: flex;
       flex-direction: column;
       div.startBtn {
@@ -79,40 +80,61 @@ section.settingsPanel {
           flex: 1;
         }
       }
-
+      h3 {
+        margin-top: 1.5em;
+      }
       .selectItems {
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
-        height: 40px;
+        flex-direction: column;
+        height: fit-content;
+        padding-bottom: 2em;
         // background-color: blue;
-        div {
-          flex: 1;
-          // background-color: rgb(208, 226, 208);
-          // border: 1px solid rgb(167, 9, 167);
-          // padding: 1rem 0;
+        div.row {
+          display: flex;
+          flex-wrap: wrap;
           text-align: center;
-
-          &.item-0 {
-            background-color: $item-0;
+          &.col-1 {
+            flex: 0 0 1;
           }
-          &.item-1 {
-            background-color: $item-1;
-          }
-          &.item-2 {
-            background-color: $item-2;
-          }
-          &.item-3 {
-            background-color: $item-3;
-          }
-          &.item-4 {
-            background-color: $item-4;
-          }
-          &.item-5 {
-            background-color: $item-5;
-          }
-          &.item-6 {
-            background-color: $item-6;
+          .cell {
+            height: 4em;
+            &.col-7 {
+              flex: 0 0 calc(100% / 7);
+            }
+            &.col-6 {
+              flex: 0 0 calc(100% / 6);
+            }
+            &.col-5 {
+              flex: 0 0 calc(100% / 5);
+            }
+            &.col-4 {
+              flex: 0 0 calc(100% / 4);
+            }
+            &.col-3 {
+              flex: 0 0 calc(100% / 3);
+            }
+            &.item-0 {
+              background-color: $item-0;
+            }
+            &.item-1 {
+              background-color: $item-1;
+            }
+            &.item-2 {
+              background-color: $item-2;
+            }
+            &.item-3 {
+              background-color: $item-3;
+            }
+            &.item-4 {
+              background-color: $item-4;
+            }
+            &.item-5 {
+              background-color: $item-5;
+            }
+            &.item-6 {
+              background-color: $item-6;
+            }
           }
         }
       }

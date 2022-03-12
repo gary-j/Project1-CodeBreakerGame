@@ -21,9 +21,9 @@ const numOfItems = [nbItem3, nbItem4, nbItem5, nbItem6, nbItem7];
 
 const chrono = document.getElementById('chrono');
 // MOVE CONTROLS 
+const gameControls = document.getElementById('gameControls');
 const startBtn = document.getElementById('start-stop');
 const lastMove = document.getElementById('lastMove');
-
 const selectItems = document.querySelector('.selectItems');
 
 // ARRAYS OF CODE 
@@ -157,22 +157,32 @@ function itemsBoardValue(variantCount){
     shuffledItems = [];
     let divs =[];
 
-    // let variantCount = e.target.value;
+    //Ajout du titre 'select'variant
+    let divTitle = document.createElement('div');
+    divTitle.classList.add('div-title', 'row','col-1');
+    let title = document.createElement('h3');
+    title.classList.add('title');
+    title.textContent='Select Items';
+    divTitle.appendChild(title);
+    selectItems.appendChild(divTitle);
 
+    // container for items
+    let itemsContainer=document.createElement('div');
+    itemsContainer.classList.add('div-items','row','col-1');
+    selectItems.appendChild(itemsContainer);
+
+    // create each items according to variantCount
     for (let j=0; j<variantCount; j++){
        let newItem = document.createElement('div');
-       newItem.classList.add('item-btn');
-       newItem.classList.add(`item-${j}`);
-       newItem.setAttribute('id',`item-${j}`)
+       newItem.classList.add('item-btn', `item-${j}`,'cell',`col-${variantCount}`);
+       newItem.setAttribute('id',`item-${j}`);
        newItem.setAttribute('value',`${j}`);
 
     // I don't appendChild the <div>  yet
-    //I shuffle them after loop
+    // I shuffle them after loop
+    // selectItems.appendChild(newItem);
+    // newItem.addEventListener('click', (e)=> console.log(e));
 
-    //    selectItems.appendChild(newItem);
-    //    newItem.addEventListener('click', (e)=> console.log(e));
-
-       console.log(newItem, 'new item');
        divs.push(newItem);
     }
 
@@ -181,7 +191,7 @@ function itemsBoardValue(variantCount){
     shuffledItems = shuffle(divs);
 
     shuffledItems.forEach(elem => {
-        selectItems.appendChild(elem);
+        itemsContainer.appendChild(elem);
     // I add the event listener;
     //    elem.addEventListener('click', (e)=> console.log(e));
         elem.addEventListener('click', (e)=> play(e));
@@ -192,8 +202,7 @@ function itemsBoardValue(variantCount){
     
     // return for the code generator
     itemsValue = variantCount;
-    console.log(itemsValue, 'item value');
-    // console.log(shuffledItems, 'shuffle items array');
+
     return itemsValue;
 }
 
@@ -398,7 +407,7 @@ function checker(arrayToCheck){
         currentRow.classList.remove('hidden');
 
         // let winGame = ()=> window.alert('YOU A CRACK ! ACCESS GRANTED !');
-        window.alert('YOU A CRACK ! ACCESS GRANTED !');
+       setTimeout(()=> window.alert('YOU A CRACK ! ACCESS GRANTED !'), 500);
         console.log('YOU A CRACK ! ACCESS GRANTED !');
         // win();
         //reset

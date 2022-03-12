@@ -21,22 +21,28 @@ body {
       // border: 1px solid blue;
       width: 60%;
       #gameGrid {
-        // background-color: rgb(48, 48, 48);
+        background-color: rgb(48, 48, 48);
         border: 2px solid white;
-        border-radius: 4em;
+        border-radius: 1em;
         max-width: calc(100% - 2em);
         margin: 0 auto;
 
         .secretCode,
         .playerTry,
-        .playerCode {
-          border: 1px solid $glow-color;
+        .playerCode,
+        .combination {
+          border-top: 1px solid $glow-color;
           display: flex;
           flex-wrap: wrap;
           .cell {
+            text-align: center;
             height: 4em;
+            font-weight: $medium;
+            font-size: 2em;
+            line-height: 4em;
+            color: $glow-color;
             &:not(:last-child) {
-              border-right: 2px solid $glow-color;
+              border-right: 1px solid $glow-color;
             }
             &.col-6 {
               flex: 0 0 calc(100% / 7);
@@ -84,7 +90,9 @@ body {
               flex: row;
               .diode {
                 width: 100%;
-                border-bottom: 1px solid $glow-color;
+                &:not(:last-child) {
+                  border-bottom: 1px solid $glow-color;
+                }
                 &.col-6 {
                   flex: 0 0 calc(100% / 3);
                   height: calc(100% / 6);
@@ -124,14 +132,36 @@ body {
         }
 
         //------------------------
+        .playerTry {
+        }
+        .playerCode {
+          .cell {
+            // a modifier si case auto-validate !
+            &.col-7 {
+              flex: 0 0 calc(100% / 7);
+            }
+            &.col-6 {
+              flex: 0 0 calc(100% / 6);
+            }
+            &.col-5 {
+              flex: 0 0 calc(100% / 5);
+            }
+            &.col-4 {
+              flex: 0 0 calc(100% / 4);
+            }
+            &.col-3 {
+              flex: 0 0 calc(100% / 3);
+            }
+          }
+        }
       }
     }
-  }
 
-  @media (max-width: 767px) {
-    main {
-      flex-direction: column;
-      // ou le settins panel en toggle ou display none
+    @media (max-width: 767px) {
+      main {
+        flex-direction: column;
+        // ou le settins panel en toggle ou display none
+      }
     }
   }
 }

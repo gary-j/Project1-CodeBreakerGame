@@ -169,154 +169,205 @@ body main section.gameboard {
   width: 60%;
 }
 body main section.gameboard #gameGrid {
+  background-color: #303030;
   border: 2px solid white;
-  border-radius: 4em;
+  border-radius: 1em;
   max-width: calc(100% - 2em);
   margin: 0 auto;
 }
 body main section.gameboard #gameGrid .secretCode,
 body main section.gameboard #gameGrid .playerTry,
-body main section.gameboard #gameGrid .playerCode {
-  border: 1px solid #d9b0ff;
+body main section.gameboard #gameGrid .playerCode,
+body main section.gameboard #gameGrid .combination {
+  border-top: 1px solid #d9b0ff;
   display: flex;
   flex-wrap: wrap;
 }
 body main section.gameboard #gameGrid .secretCode .cell,
 body main section.gameboard #gameGrid .playerTry .cell,
-body main section.gameboard #gameGrid .playerCode .cell {
+body main section.gameboard #gameGrid .playerCode .cell,
+body main section.gameboard #gameGrid .combination .cell {
+  text-align: center;
   height: 4em;
+  font-weight: 500;
+  font-size: 2em;
+  line-height: 4em;
+  color: #d9b0ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell:not(:last-child),
 body main section.gameboard #gameGrid .playerTry .cell:not(:last-child),
-body main section.gameboard #gameGrid .playerCode .cell:not(:last-child) {
-  border-right: 2px solid #d9b0ff;
+body main section.gameboard #gameGrid .playerCode .cell:not(:last-child),
+body main section.gameboard #gameGrid .combination .cell:not(:last-child) {
+  border-right: 1px solid #d9b0ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-6,
 body main section.gameboard #gameGrid .playerTry .cell.col-6,
-body main section.gameboard #gameGrid .playerCode .cell.col-6 {
+body main section.gameboard #gameGrid .playerCode .cell.col-6,
+body main section.gameboard #gameGrid .combination .cell.col-6 {
   flex: 0 0 14.2857142857%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-5,
 body main section.gameboard #gameGrid .playerTry .cell.col-5,
-body main section.gameboard #gameGrid .playerCode .cell.col-5 {
+body main section.gameboard #gameGrid .playerCode .cell.col-5,
+body main section.gameboard #gameGrid .combination .cell.col-5 {
   flex: 0 0 16.6666666667%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-4,
 body main section.gameboard #gameGrid .playerTry .cell.col-4,
-body main section.gameboard #gameGrid .playerCode .cell.col-4 {
+body main section.gameboard #gameGrid .playerCode .cell.col-4,
+body main section.gameboard #gameGrid .combination .cell.col-4 {
   flex: 0 0 20%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-3,
 body main section.gameboard #gameGrid .playerTry .cell.col-3,
-body main section.gameboard #gameGrid .playerCode .cell.col-3 {
+body main section.gameboard #gameGrid .playerCode .cell.col-3,
+body main section.gameboard #gameGrid .combination .cell.col-3 {
   flex: 0 0 25%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-2,
 body main section.gameboard #gameGrid .playerTry .cell.col-2,
-body main section.gameboard #gameGrid .playerCode .cell.col-2 {
+body main section.gameboard #gameGrid .playerCode .cell.col-2,
+body main section.gameboard #gameGrid .combination .cell.col-2 {
   flex: 0 0 33.3333333333%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.col-1,
 body main section.gameboard #gameGrid .playerTry .cell.col-1,
-body main section.gameboard #gameGrid .playerCode .cell.col-1 {
+body main section.gameboard #gameGrid .playerCode .cell.col-1,
+body main section.gameboard #gameGrid .combination .cell.col-1 {
   flex: 0 0 50%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-0,
 body main section.gameboard #gameGrid .playerTry .cell.item-0,
-body main section.gameboard #gameGrid .playerCode .cell.item-0 {
+body main section.gameboard #gameGrid .playerCode .cell.item-0,
+body main section.gameboard #gameGrid .combination .cell.item-0 {
   background-color: #8300ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-1,
 body main section.gameboard #gameGrid .playerTry .cell.item-1,
-body main section.gameboard #gameGrid .playerCode .cell.item-1 {
+body main section.gameboard #gameGrid .playerCode .cell.item-1,
+body main section.gameboard #gameGrid .combination .cell.item-1 {
   background-color: #ff8300;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-2,
 body main section.gameboard #gameGrid .playerTry .cell.item-2,
-body main section.gameboard #gameGrid .playerCode .cell.item-2 {
+body main section.gameboard #gameGrid .playerCode .cell.item-2,
+body main section.gameboard #gameGrid .combination .cell.item-2 {
   background-color: #1289a7;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-3,
 body main section.gameboard #gameGrid .playerTry .cell.item-3,
-body main section.gameboard #gameGrid .playerCode .cell.item-3 {
+body main section.gameboard #gameGrid .playerCode .cell.item-3,
+body main section.gameboard #gameGrid .combination .cell.item-3 {
   background-color: #00ff83;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-4,
 body main section.gameboard #gameGrid .playerTry .cell.item-4,
-body main section.gameboard #gameGrid .playerCode .cell.item-4 {
+body main section.gameboard #gameGrid .playerCode .cell.item-4,
+body main section.gameboard #gameGrid .combination .cell.item-4 {
   background-color: #ff00fc;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-5,
 body main section.gameboard #gameGrid .playerTry .cell.item-5,
-body main section.gameboard #gameGrid .playerCode .cell.item-5 {
+body main section.gameboard #gameGrid .playerCode .cell.item-5,
+body main section.gameboard #gameGrid .combination .cell.item-5 {
   background-color: #0300ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell.item-6,
 body main section.gameboard #gameGrid .playerTry .cell.item-6,
-body main section.gameboard #gameGrid .playerCode .cell.item-6 {
+body main section.gameboard #gameGrid .playerCode .cell.item-6,
+body main section.gameboard #gameGrid .combination .cell.item-6 {
   background-color: #000000;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker),
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker),
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker),
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) {
   display: flex;
   flex-wrap: wrap;
   flex: row;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode {
   width: 100%;
+}
+body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode:not(:last-child),
+body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode:not(:last-child),
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode:not(:last-child),
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode:not(:last-child) {
   border-bottom: 1px solid #d9b0ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.col-6,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.col-6,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-6 {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-6,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.col-6 {
   flex: 0 0 33.3333333333%;
   height: 16.6666666667%;
   width: auto;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.col-5,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.col-5,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-5 {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-5,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.col-5 {
   flex: 0 0 33.3333333333%;
   height: 20%;
   width: auto;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.col-4,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.col-4,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-4 {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-4,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.col-4 {
   flex: 0 0 50%;
   height: 25%;
   width: auto;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.col-3,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.col-3,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-3 {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.col-3,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.col-3 {
   flex: 0 0 50%;
   width: auto;
   height: 33.3333333333%;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.perfect,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.perfect,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.perfect {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.perfect,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.perfect {
   background-color: #00ff03;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.exist,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.exist,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.exist {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.exist,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.exist {
   background-color: #ff9b44;
 }
 body main section.gameboard #gameGrid .secretCode .cell.checker:not(#secretChecker) .diode.none,
 body main section.gameboard #gameGrid .playerTry .cell.checker:not(#secretChecker) .diode.none,
-body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.none {
+body main section.gameboard #gameGrid .playerCode .cell.checker:not(#secretChecker) .diode.none,
+body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChecker) .diode.none {
   background-color: #858585;
 }
 body main section.gameboard #gameGrid h2 {
   text-align: center;
 }
+body main section.gameboard #gameGrid .playerCode .cell.col-7 {
+  flex: 0 0 14.2857142857%;
+}
+body main section.gameboard #gameGrid .playerCode .cell.col-6 {
+  flex: 0 0 16.6666666667%;
+}
+body main section.gameboard #gameGrid .playerCode .cell.col-5 {
+  flex: 0 0 20%;
+}
+body main section.gameboard #gameGrid .playerCode .cell.col-4 {
+  flex: 0 0 25%;
+}
+body main section.gameboard #gameGrid .playerCode .cell.col-3 {
+  flex: 0 0 33.3333333333%;
+}
 @media (max-width: 767px) {
-  body main {
+  body main main {
     flex-direction: column;
   }
 }
@@ -328,7 +379,7 @@ section.settingsPanel {
 section.settingsPanel .container {
   background-color: #303030;
   border: 2px solid white;
-  border-radius: 4em;
+  border-radius: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -372,6 +423,7 @@ section.settingsPanel .container .settings div.separator {
   margin: 2em auto;
 }
 section.settingsPanel .container .gameControls {
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
 }
@@ -381,35 +433,61 @@ section.settingsPanel .container .gameControls div.startBtn {
 section.settingsPanel .container .gameControls div.startBtn button {
   flex: 1;
 }
+section.settingsPanel .container .gameControls h3 {
+  margin-top: 1.5em;
+}
 section.settingsPanel .container .gameControls .selectItems {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  height: 40px;
+  flex-direction: column;
+  height: fit-content;
+  padding-bottom: 2em;
 }
-section.settingsPanel .container .gameControls .selectItems div {
-  flex: 1;
+section.settingsPanel .container .gameControls .selectItems div.row {
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-0 {
+section.settingsPanel .container .gameControls .selectItems div.row.col-1 {
+  flex: 0 0 1;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell {
+  height: 4em;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.col-7 {
+  flex: 0 0 14.2857142857%;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.col-6 {
+  flex: 0 0 16.6666666667%;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.col-5 {
+  flex: 0 0 20%;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.col-4 {
+  flex: 0 0 25%;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.col-3 {
+  flex: 0 0 33.3333333333%;
+}
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-0 {
   background-color: #8300ff;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-1 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-1 {
   background-color: #ff8300;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-2 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-2 {
   background-color: #1289a7;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-3 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-3 {
   background-color: #00ff83;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-4 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-4 {
   background-color: #ff00fc;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-5 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-5 {
   background-color: #0300ff;
 }
-section.settingsPanel .container .gameControls .selectItems div.item-6 {
+section.settingsPanel .container .gameControls .selectItems div.row .cell.item-6 {
   background-color: #000000;
 }
 
