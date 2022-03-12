@@ -133,6 +133,9 @@ body {
 
         //------------------------
         .playerTry {
+          &.hidden {
+            display: none;
+          }
         }
         .playerCode {
           .cell {

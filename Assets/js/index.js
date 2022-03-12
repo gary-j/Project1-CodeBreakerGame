@@ -139,10 +139,11 @@ function createBoard(codeCount){
         // elem.addEventListener('click', effacer la case);
     });
     
-    console.log(` ${maxClickAllowed} à été ajouté !`);
+    // console.log(` ${maxClickAllowed} à été ajouté !`);
 
     // return for the code generator
-    console.log(codeValue, 'code value');
+
+    // console.log(codeValue, 'code value');
     return codeValue;
 }
 
@@ -218,7 +219,7 @@ let x = itemsValue;
 for(let j=0; j<i; j++){
     arrayCode.push(Math.floor(Math.random()*x));
 }
-    console.log(arrayCode,'le code généré');
+    // console.log(arrayCode,'le code généré');
     return arrayCode
 }
 
@@ -252,7 +253,8 @@ function startGame(codeCount, variantCount){
         rowReset();
         resetBtn();
         reset();
-        console.log(arrayCode, 'tableau vidé');
+
+        // console.log(arrayCode, 'tableau vidé');
 
     }
 }
@@ -262,8 +264,9 @@ function startGame(codeCount, variantCount){
 function play(e){
     let btn = e;
     let btnValue = btn.target.attributes.value.textContent;
-    console.log(clickCounter, 'avant exec');
-    console.log(maxClickAllowed, 'click max');
+
+    // console.log(clickCounter, 'avant exec');
+    // console.log(maxClickAllowed, 'click max');
     
     // Controle du nombre de clique
     if(clickCounter < maxClickAllowed){
@@ -278,10 +281,10 @@ function play(e){
 
         clickCounter++; 
 
-        console.log(clickCounter, 'compteur click actuel');
+        // console.log(clickCounter, 'compteur click actuel');
 
-        console.log(arrayToCheck, 'check this array');
-        console.log(arrayCode, 'avec ce code');
+        // console.log(arrayToCheck, 'check this array');
+        // console.log(arrayCode, 'avec ce code');
 
        
         // Call the check
@@ -296,7 +299,7 @@ function play(e){
 
             //augmenter le compteur d'essai
             tryCounter++;
-            console.log(tryCounter, 'compteur row essai');
+            // console.log(tryCounter, 'compteur row essai');
 
             // Appel du checker
             checker(arrayToCheck);
@@ -309,7 +312,7 @@ function play(e){
 // C R E A T E _ C H E C K E R
 
 function checker(arrayToCheck){
-    console.log('Appel checker ok !');
+    // console.log('Appel checker ok !');
     //security :p
     if((arrayToCheck.length !== arrayCode.length) || !arrayToCheck || !arrayCode){
         return
@@ -317,12 +320,11 @@ function checker(arrayToCheck){
     //
     let copyCheck=[...arrayToCheck];
     let copyRealCode=[...arrayCode];
-    // let actualRow = document.getElementById('try')
-    //
-    console.log(tryCounter, 'trycounter');
+
+    // console.log(tryCounter, 'trycounter');
 
     let lesDiodes = document.querySelectorAll(`#playerTry${tryCounter-1} .diode`);
-    console.log(lesDiodes);
+    // console.log(lesDiodes);
     let countPerfect = 0;
     let countExist = 0;
     let countNone = 0;
@@ -330,14 +332,14 @@ function checker(arrayToCheck){
     // 1. P E R F E C T - Does it exist at the right place? 
     
     copyCheck.forEach((elem, i) => {
-        console.log('tour:', i, '1ere boucle');
+        // console.log('tour:', i, '1ere boucle');
 
         if(elem === arrayCode[i]){
             copyCheck.splice(i,1,'!');
             copyRealCode.splice(i,1,'!');
             countPerfect++;
 
-            console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
+            // console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
         }
     });
 
@@ -346,8 +348,8 @@ function checker(arrayToCheck){
     // Sort the arrays
     copyCheck.sort();
     copyRealCode.sort();
-    console.log(copyCheck, 'copycheck sorted');
-    console.log(copyRealCode, 'copyRealCode sorted');
+    // console.log(copyCheck, 'copycheck sorted');
+    // console.log(copyRealCode, 'copyRealCode sorted');
 
     copyCheck.forEach((elem, i) => {
         // Compare the existing pair 'exist'
@@ -360,13 +362,13 @@ function checker(arrayToCheck){
         }
         
     });
-    console.log(copyCheck, 'copycheck after \'EXIST\'');
-    console.log(copyRealCode, 'copyRealCode after \'EXIST\'');
+    // console.log(copyCheck, 'copycheck after \'EXIST\'');
+    // console.log(copyRealCode, 'copyRealCode after \'EXIST\'');
 
     // Sort the arrays again
     copyCheck.sort();
     copyRealCode.sort();
-    console.log(copyCheck, copyRealCode, 'SORTED BEFORE NOT IN THE CODE');
+    // console.log(copyCheck, copyRealCode, 'SORTED BEFORE NOT IN THE CODE');
 
     // 3.  N O T _ I N _ T H E _ C O D E
     copyCheck.forEach((elem, i) => {
@@ -385,9 +387,9 @@ function checker(arrayToCheck){
      for(let a=0; a<countPerfect; a++){
         lesDiodes[a].classList.add('perfect');
     }
-    console.log(copyCheck, 'copycheck après PERFECT');
-    console.log(copyRealCode, 'copyRealCode après PERFECT');
-    console.log(lesDiodes, 'les diodes avec classes');
+    // console.log(copyCheck, 'copycheck après PERFECT');
+    // console.log(copyRealCode, 'copyRealCode après PERFECT');
+    // console.log(lesDiodes, 'les diodes avec classes');
 
     // Add 'exist' class to diode
     countNone = arrayCode.length - (countPerfect+countExist);
@@ -408,13 +410,16 @@ function checker(arrayToCheck){
 
         // let winGame = ()=> window.alert('YOU A CRACK ! ACCESS GRANTED !');
        setTimeout(()=> window.alert('YOU A CRACK ! ACCESS GRANTED !'), 500);
-        console.log('YOU A CRACK ! ACCESS GRANTED !');
+    
+        // console.log('YOU A CRACK ! ACCESS GRANTED !');
+ 
+        
         // win();
         //reset
-        // reset();
     }else{   
     // IF WRONG => set checker cell diode => createRowTry()
-       console.log(currentRow, 'current row');
+    // console.log(currentRow, 'current row');
+
         currentRow.classList.remove('hidden');
         previousRow = currentRow;
         currentRow = createTryRow();

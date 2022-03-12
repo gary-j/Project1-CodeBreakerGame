@@ -351,6 +351,9 @@ body main section.gameboard #gameGrid .combination .cell.checker:not(#secretChec
 body main section.gameboard #gameGrid h2 {
   text-align: center;
 }
+body main section.gameboard #gameGrid .playerTry.hidden {
+  display: none;
+}
 body main section.gameboard #gameGrid .playerCode .cell.col-7 {
   flex: 0 0 14.2857142857%;
 }
