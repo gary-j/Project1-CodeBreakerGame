@@ -26,7 +26,10 @@ body {
         border-radius: 1em;
         max-width: calc(100% - 2em);
         margin: 0 auto;
-
+        #gridPlayerTry {
+          max-height: 40em;
+          overflow-y: scroll;
+        }
         .secretCode,
         .playerTry,
         .playerCode,

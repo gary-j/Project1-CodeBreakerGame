@@ -175,6 +175,10 @@ body main section.gameboard #gameGrid {
   max-width: calc(100% - 2em);
   margin: 0 auto;
 }
+body main section.gameboard #gameGrid #gridPlayerTry {
+  max-height: 40em;
+  overflow-y: scroll;
+}
 body main section.gameboard #gameGrid .secretCode,
 body main section.gameboard #gameGrid .playerTry,
 body main section.gameboard #gameGrid .playerCode,
