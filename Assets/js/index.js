@@ -219,7 +219,7 @@ let x = itemsValue;
 for(let j=0; j<i; j++){
     arrayCode.push(Math.floor(Math.random()*x));
 }
-    // console.log(arrayCode,'le code généré');
+    console.log(arrayCode,'le code généré');
     return arrayCode
 }
 
@@ -283,9 +283,10 @@ function play(e){
 
         // console.log(clickCounter, 'compteur click actuel');
 
-        // console.log(arrayToCheck, 'check this array');
-        // console.log(arrayCode, 'avec ce code');
+        console.log(arrayToCheck, 'check this array');
+        console.log(arrayCode, 'avec ce code');
 
+    }
        
         // Call the check
         if(clickCounter === maxClickAllowed){
@@ -306,7 +307,6 @@ function play(e){
 
            
         } 
-    }
 }
 
 // C R E A T E _ C H E C K E R
@@ -331,13 +331,13 @@ function checker(arrayToCheck){
 
     // 1. P E R F E C T - Does it exist at the right place? 
     
-    copyCheck.forEach((elem, i) => {
+    copyRealCode.forEach((elem, i) => {
         // console.log('tour:', i, '1ere boucle');
 
-        if(elem === arrayCode[i]){
+        if(elem === copyCheck[i]){
+            countPerfect++;
             copyCheck.splice(i,1,'!');
             copyRealCode.splice(i,1,'!');
-            countPerfect++;
 
             // console.log('BINGO', elem, 'correct', arrayCode,' :code', copyCheck,' :copyCheck');        
         }
@@ -348,38 +348,49 @@ function checker(arrayToCheck){
     // Sort the arrays
     copyCheck.sort();
     copyRealCode.sort();
-    // console.log(copyCheck, 'copycheck sorted');
-    // console.log(copyRealCode, 'copyRealCode sorted');
+    console.log(copyCheck, 'copycheck sorted');
+    console.log(copyRealCode, 'copyRealCode sorted');
 
-    copyCheck.forEach((elem, i) => {
+    copyRealCode.forEach((elem, i) => {
         // Compare the existing pair 'exist'
       
-        if(typeof(elem)==='number' && elem === copyRealCode[i]){ 
+        if(typeof(elem)==='number' && elem === copyCheck[i]){ 
             countExist++;
 
             copyCheck.splice(i,1,'?');
             copyRealCode.splice(i,1,'?');
+
+            console.log('Pair Existing ?', countExist);
         }
         
     });
-    // console.log(copyCheck, 'copycheck after \'EXIST\'');
-    // console.log(copyRealCode, 'copyRealCode after \'EXIST\'');
-
-    // Sort the arrays again
-    copyCheck.sort();
-    copyRealCode.sort();
-    // console.log(copyCheck, copyRealCode, 'SORTED BEFORE NOT IN THE CODE');
-
-    // 3.  N O T _ I N _ T H E _ C O D E
-    copyCheck.forEach((elem, i) => {
-        // Compare the existing pair 'exist'
-      
-        if(typeof(elem)==='number' && !copyRealCode.includes(elem)){ 
-            countNone++;
+    // check if item is included and occurances
+   copyRealCode.forEach( (elem,i) =>{
+        if(!copyCheck.includes(elem) && typeof(elem)==='number'){
+            copyRealCode.splice(i,1,elem) 
+            countNone++
         }
+        console.log(copyRealCode, 'splice copyRealcode, non inclus');
+        console.log(copyCheck, 'splice copyCheck, non inclus');
+        if(typeof(elem)==='number'){
+            let occurRealCode = copyRealCode.filter(x=>x===elem).length;
+            let occurCopyCheck = copyCheck.filter(x=>x===elem).length;
+            console.log(occurRealCode, 'OCCUR REAL CODE', occurCopyCheck, 'Occur copyCheck');
+            
+            if(occurRealCode===occurCopyCheck){
+                countExist+=occurRealCode;
+            }else if(occurRealCode > occurCopyCheck) {
+                countExist += occurCopyCheck;
+            }else if(occurRealCode < occurCopyCheck){
+                countExist+= occurRealCode;
+            }else{
+                return; // bug
+            }
+        }   
         
-    });
+   })
 
+   console.log('AVANT AJOUT CLASSES',countPerfect, ': perfect', countExist, ' :exist', countNone, ':none');
 
     // A D D I N G _ C L A S S E S _ T O _ D I O D E
 
@@ -392,7 +403,7 @@ function checker(arrayToCheck){
     // console.log(lesDiodes, 'les diodes avec classes');
 
     // Add 'exist' class to diode
-    countNone = arrayCode.length - (countPerfect+countExist);
+    // countNone = arrayCode.length - (countPerfect+countExist);
 
     for(let a=countPerfect; a<(arrayCode.length-countNone); a++){
         lesDiodes[a].classList.add('exist');
@@ -412,8 +423,6 @@ function checker(arrayToCheck){
        setTimeout(()=> window.alert('YOU A CRACK ! ACCESS GRANTED !'), 500);
     
         // console.log('YOU A CRACK ! ACCESS GRANTED !');
- 
-        
         // win();
         //reset
     }else{   

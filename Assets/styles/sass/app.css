@@ -188,10 +188,10 @@ body main section.gameboard #gameGrid .playerTry .cell,
 body main section.gameboard #gameGrid .playerCode .cell,
 body main section.gameboard #gameGrid .combination .cell {
   text-align: center;
-  height: 4em;
+  height: 2em;
   font-weight: 500;
   font-size: 2em;
-  line-height: 4em;
+  line-height: 2em;
   color: #d9b0ff;
 }
 body main section.gameboard #gameGrid .secretCode .cell:not(:last-child),

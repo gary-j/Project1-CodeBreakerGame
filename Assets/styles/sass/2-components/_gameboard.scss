@@ -36,10 +36,10 @@ body {
           flex-wrap: wrap;
           .cell {
             text-align: center;
-            height: 4em;
+            height: 2em;
             font-weight: $medium;
             font-size: 2em;
-            line-height: 4em;
+            line-height: 2em;
             color: $glow-color;
             &:not(:last-child) {
               border-right: 1px solid $glow-color;
