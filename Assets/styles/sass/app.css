@@ -400,7 +400,6 @@ section.settingsPanel .container .settings .setter div.length {
 }
 section.settingsPanel .container .settings .setter div.length input {
   border: 0.5rem solid #d9b0ff;
-  background-color: transparent;
 }
 section.settingsPanel .container .settings .setter div.length input:checked {
   border: 0.5rem solid #d9b0ff;
